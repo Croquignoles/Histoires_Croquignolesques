@@ -30,6 +30,7 @@ else
 
 
 </nav>
+<?= bidule?>
 <?php for ($i=1; $i <= $nbhistoire; $i++) { 
     $maRequete = "SELECT * FROM histoires WHERE id_histoire = $i";
     $response = $BDD->query($maRequete);
