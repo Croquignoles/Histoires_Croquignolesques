@@ -9,11 +9,11 @@ $isConncted = false;
 
 
 // Dans la requête, on remplace les valeurs issues de variables par des ?
-$maRequete = "SELECT * FROM user";
+$maRequete = "SELECT * FROM users";
 // On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
 $response = $BDD->query($maRequete);
 while($ligne = $response->fetch()) {
-    if ($ligne["usr_login"]==$login && $ligne["usr_password"]==$mdp){
+    if ($ligne["id_user"]==$login && $ligne["mdp_user"]==$mdp){
         echo "Bonjour " . $login . "!";        
         $_SESSION['user'] = $login;
         header("Location: index.php");

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html>
 
@@ -30,8 +31,7 @@ else
 
 
 </nav>
-<?= hahahahaha ?>
-<?= bidule?>
+
 <?php for ($i=1; $i <= $nbhistoire; $i++) { 
     $maRequete = "SELECT * FROM histoires WHERE id_histoire = $i";
     $response = $BDD->query($maRequete);
@@ -39,15 +39,22 @@ else
     $id = $ligne["id_histoire"];
     $title = $ligne["nom_histoire"];
     $pages = $ligne["nb_pages"];
+    $des_courte = $ligne["description_histoire"];
     ?>
 <article>
+            <?php if(!empty($_SESSION['user'])) {?>
                 <h3><a class="movieTitle" href="movie.php?id=<?=$id ?>"><?=$title ?></a></h3>
-</article>
-<?php } ?>
-//<p class="movieContent"><?= $des_courte?></p>
+            <?php } else {?>
+                <h3><?=$title ?></h3>
+            <p class="movieContent"><?= $des_courte?></p>
 
-                    
-        
+</article>
+<?php } 
+
+}?>
+
+
+                  
         <footer class="footer">
     Construit avec swag par lololezigoto, élève à l'<a href="https://www.ensc.fr">ENSC</a>.
 </footer>    </div>
