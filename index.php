@@ -43,7 +43,7 @@ else
     ?>
 <article>
             <?php if(!empty($_SESSION['user'])) {?>
-                <h3><a class="movieTitle" href="movie.php?id=<?=$id ?>"><?=$title ?></a></h3>
+                <h3><a class="movieTitle" href="histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
 
             <?php 
                 echo $des_courte;
@@ -59,7 +59,6 @@ else
 
                   
         <footer class="footer">
-            <br/>
     Construit avec swag par lololezigoto, élève à l'<a href="https://www.ensc.fr">ENSC</a>.
 </footer>    </div>
 
