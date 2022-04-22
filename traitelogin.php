@@ -1,18 +1,10 @@
 <?php session_start();
 
 include("includes/connect.php");
-include("login.php");
 
 $login = $_POST['login'];
 $mdp = $_POST['password'];
 $isConncted = false;
-
-
-/*// Dans la requête, on remplace les valeurs issues de variables par des ?
-$maRequete = "SELECT * FROM users WHERE (id_user=:login AND mdp_user=:mdp)";
-// On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
-$response = $BDD->prepare($maRequete);
-$response = $BDD->execute($maRequete);*/
 
 $requete = "SELECT * FROM users WHERE id_user=? AND mdp_user=?";
 $response = $BDD->prepare($requete);
@@ -37,6 +29,4 @@ if ($nb ==0){
 } else {
     echo "Chelou ta bdd mon reuf";
 }
-
-
 ?> 

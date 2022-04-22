@@ -17,7 +17,7 @@
 
         
         <div class="well">
-            <form class="form-signin form-horizontal" role="form" action="traitelogin.php" method="post">
+            <form class="form-signin form-horizontal" role="form" action="traitesignin.php" method="post">
                 <div class="form-group">
                     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                     <input type="text" name="login" class="form-control" placeholder="Choissisez votre login" required autofocus>
