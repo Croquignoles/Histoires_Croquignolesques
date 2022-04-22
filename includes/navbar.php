@@ -20,6 +20,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="login.php">Se connecter</a></li>
+                                    <li><a href="signin.php">S'inscrire</a></li>
                                 </ul>
                             </li>
                                     </ul>
