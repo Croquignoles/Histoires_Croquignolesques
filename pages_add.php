@@ -7,33 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>Histoires croquignolesques - ajout d'une histoire</title>
+    <title>Histoires croquignolesques - ajout d'une page</title>
 </head>
     <body>
       <?php include("includes/navbar.php"); ?>
 
-          <h2 class="text-center">Ajout d'une histoire</h2>
+          <h2 class="text-center">Ajout d'une page</h2>
           <div class="well">
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteaddmovie.php" method="post">
+            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteaddpages.php" method="post">
               <input type="hidden" name="id" value="">
               <div class="form-group">
-                <label class="col-sm-4 control-label">Titre de l'histoire</label>
+                <label class="col-sm-4 control-label">contenu de la page</label>
                 <div class="col-sm-6">
-                  <input type="text" name="title" value="" class="form-control" placeholder="Entrez le titre de l'histoire" required autofocus>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4 control-label">Description de l'histoire</label>
-                <div class="col-sm-6">
-                  <textarea name="description" class="form-control" placeholder="Entrez sa description" required>
+                  <textarea name="contenu" class="form-control" placeholder="Entrez le contenu de la page" required>
                                       </textarea>
                 </div>
               </div>
-              
               <div class="form-group">
-                <label class="col-sm-4 control-label">Image</label>
-                <div class="col-sm-4">
-                  <input type="file" name="image" />
+                <label class="col-sm-4 control-label">Titre de l'histoire</label>
+                <div class="col-sm-6">
+                  <input type="number" name="pageActuelle" value="" class="form-control" placeholder="Entrez le numéro de page" required autofocus>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Titre de l'histoire</label>
+                <div class="col-sm-6">
+                  <input type="number" name="pageEntree" value="" class="form-control" placeholder="Entrez le numéro de page qui vous a amené là" required autofocus>
                 </div>
               </div>
               <div class="form-group">
