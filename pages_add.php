@@ -17,7 +17,9 @@ session_start();
     include("includes/navbar_connected.php"); 
 else 
     include("includes/navbar.php");
-?>?>
+
+    include("includes/connect.php")
+?>
 
           <h2 class="text-center">Ajout d'une page</h2>
           <div class="well">
@@ -44,26 +46,32 @@ else
                         $ligne = $rep->fetch();
                         $title = $ligne["nom_histoire"];
                         ?>
-                        <option value="numeroPage"><?=$title?></option>
+                        <option value="titreHistoire"><?=$title?></option>
                         <?php
                       }
                     ?>
+                </select>
                 </div>
               </div>
+              
                     
               <div class="form-group">
-                <label class="col-sm-4 control-label">Titre de l'histoire</label>
+                <label class="col-sm-4 control-label">Page qui amène ici</label>
                 <div class="col-sm-6">
                   <select name='pageDepart' id='page_select' required>
                     <option value="">--Choisissez la page qui amène a cette page--</option>
-                    <option value="firstPage">Première page</option>
+                    <option value="pageDepart">C'est la première page du livre</option>
                     <?php 
-                      $req="SELECT COUNT('id_pages') FROM histoires";
+                      $req="SELECT * FROM pages";
                       $rep=$BDD->query($req);
-                      for ($i=1;$i<=$rep;$i++)
+                      $nbHistoire = $rep->rowCount();
+                      for ($i=0;$i<=$nbHistoire;$i++)
                       {
+                        $ligne = $rep->fetch();
+                        $desc_courte=$ligne['desc_courte'];
                         ?>
-                        <option value="numeroPage"><?=$i?></option>
+                        
+                        <option value="pageDepart"><?=$i?> - <?=$desc_courte?></option>
                         <?php
                       }
                     ?>
