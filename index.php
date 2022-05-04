@@ -43,8 +43,11 @@ else
     ?>
 <article>
             <?php if(!empty($_SESSION['user'])) {?>
-                <h3><a class="movieTitle" href="movie.php?id=<?=$id ?>"><?=$title ?></a></h3>
-            <?php } else {?>
+                <h3><a class="movieTitle" href="histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
+
+            <?php 
+                echo $des_courte;
+                } else {?>
                 <h3><?=$title ?></h3>
             <p class="movieContent"><?= $des_courte?></p>
 

@@ -17,16 +17,18 @@
                     <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-film"></span> Un site internet quelconque</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse-target">
-                    <?php if($_SESSION['isAdmin']==1){?>
+                    <?php 
+                    if(isset($_SESSION['isAdmin']))
+                        if($_SESSION['isAdmin']==1){?>
 
-                    
-                                    <ul class="nav navbar-nav">
-                            <li><a href="movie_add.php">Créer une nouvelle histoire</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav">
-                            <li><a href="movie_add.php">Gérer les histoires existantes</a></li>
-                        </ul>
-                    <?php } ?>
+                        
+                                        <ul class="nav navbar-nav">
+                                <li><a href="movie_add.php">Créer une nouvelle histoire</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li><a href="movie_add.php">Gérer les histoires existantes</a></li>
+                            </ul>
+                        <?php } ?>
                                 <ul class="nav navbar-nav navbar-right">
                                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
