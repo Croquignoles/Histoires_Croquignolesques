@@ -13,7 +13,6 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 $rep = $BDD->query($maRequete1);
 $nbhistoire = $rep->rowCount(); 
     $ligne = $rep->fetch();
-    $id = $ligne["id_histoire"];
     $title = $ligne["nom_histoire"];
     $pages = $ligne["nb_pages"];
     $des_courte = $ligne["description_histoire"];

@@ -1,7 +1,6 @@
 <?php session_start();
 
 include("includes/connect.php");
-//include("signin.php");
 
 $login = $_POST['login'];
 $mdp = $_POST['password'];

@@ -5,18 +5,14 @@
 <?php include("includes/connect.php"); 
 $id = $_GET["id"];
 $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
-$rep = $BDD->query($maRequete1);
-$nbhistoire = $rep->rowCount(); 
-for ($i=1; $i <= $nbhistoire; $i++) { 
-    $maRequete = "SELECT * FROM histoires WHERE id_histoire = $i";
-    $response = $BDD->query($maRequete);
+
+    $response = $BDD->query($maRequete1);
     $ligne = $response->fetch();
     $id = $ligne["id_histoire"];
     $title = $ligne["nom_histoire"];
-    $pages = $ligne["nb_pages"];
     $des_courte = $ligne["description_histoire"];
     $image = $ligne["image_histoire"];
-}
+
 ?>
 
 
@@ -26,7 +22,7 @@ for ($i=1; $i <= $nbhistoire; $i++) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>MyMovies - <?= $titre ?> </title>
+    <title>Histoire - <?= $titre ?> </title>
 </head>
 <body>
 
