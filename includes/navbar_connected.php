@@ -26,7 +26,7 @@
                                 <li><a href="histoire_add.php">Créer une nouvelle histoire</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
-                                <li><a href="pages_add.php">Gérer les histoires existantes</a></li>
+                                <li><a href="gerer_histoire.php">Gérer les histoires existantes</a></li>
                             </ul>
                         <?php } ?>
                                 <ul class="nav navbar-nav navbar-right">
