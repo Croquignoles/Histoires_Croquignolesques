@@ -1,6 +1,6 @@
 <?php  
 session_start();
-$idpage = $_GET["idpagechoix"];
+$id = $_GET["id"];
 $titrehistoire = $_GET["story"];
 ?>
 
@@ -9,7 +9,7 @@ $titrehistoire = $_GET["story"];
 
 <?php include("includes/connect.php"); 
 
-$maRequete = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart = $idpage";
+$maRequete = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart IS NULL";
  
     $response = $BDD->query($maRequete);
     $ligne = $response->fetch();
@@ -41,15 +41,28 @@ else
 
         <div class="jumbotron">
             <div class="row">
-                <div class="col-md-5 col-sm-7">
-                    <img class="img-responsive movieImage" src="images/<?= $image ?>" title=<?= $title?> />
-                </div>
                 <div class="col-md-7 col-sm-5">
-                    <p><small><?= $des_courte?></small></p>
+                    <p><small><?= $texte?></small></p>
                 </div>
-                <div class="col-md-7 col-sm-5">
-                <a href="page.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button"> Let's go !</a>
+                <?php
+                $maRequete2 = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart = $idpage";
+                $response2 = $BDD->query($maRequete2);
+                $nbchoix = $response2->rowCount();
+                foreach ($response2 as $ligne2)
+                {
+                    $idpagechoix = $ligne2["id_pages"];
+                    $textechoix = $ligne2["text_page"];
+                    $idhistoirechoix = $ligne2["id_histoire"]; ?>
+
+                    <div class="col-sm-3">
+                    <p><small><?= $textechoix?></small></p>
+                    <a href="page.php?story=<?=$title?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
                 </div>
+                <?php
+                }
+                
+                ?>
+                
             </div>
         </div>
 

@@ -1,3 +1,6 @@
+<?php  
+session_start();
+?>
 <!doctype html>
   <html>
 
@@ -10,7 +13,11 @@
     <title>Histoires croquignolesques - ajout d'une histoire</title>
 </head>
     <body>
-      <?php include("includes/navbar.php"); ?>
+      <?php if(!empty($_SESSION['user']))
+    include("includes/navbar_connected.php"); 
+else 
+    include("includes/navbar.php");
+?> ?>
 
           <h2 class="text-center">Ajout d'une histoire</h2>
           <div class="well">
