@@ -12,7 +12,17 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     $title = $ligne["nom_histoire"];
     $des_courte = $ligne["description_histoire"];
     $image = $ligne["image_histoire"];
+    $nbParties = $ligne["nb_parties"];
 
+    function addGameFunction($BDD, $id, $actualNbParties)
+{
+    $req = $BDD->prepare("UPDATE histoires SET nb_parties = :nbParties WHERE id_histoire=:id");
+    $req->execute(array(
+    'nbParties' => $actualNbParties + 1,
+    'id' => $id,
+    ));
+
+}
 ?>
 
 
@@ -27,6 +37,9 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 <body>
 
 <?php 
+
+
+
 if(!empty($_SESSION['user']))
     include("includes/navbar_connected.php"); 
 else 
@@ -45,7 +58,7 @@ else
                     <p><small><?= $des_courte?></small></p>
                 </div>
                 <div class="col-md-7 col-sm-5">
-                <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button"> Let's go !</a>
+                <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button" onclick="<?=addGameFunction($BDD, $id,$nbParties)?>"> Let's go !</a>
                 </div>
             </div>
         </div>

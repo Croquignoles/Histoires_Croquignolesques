@@ -41,7 +41,7 @@ else
 
         <div class="jumbotron">
             <div class="row">
-                <div class="col-md-7 col-sm-5">
+                <div class="col- 1">
                     <p><small><?= $texte?></small></p>
                 </div>
                 <?php
@@ -52,11 +52,12 @@ else
                 {
                     $idpagechoix = $ligne2["id_pages"];
                     $textechoix = $ligne2["text_page"];
-                    $idhistoirechoix = $ligne2["id_histoire"]; ?>
+                    $descourte = $ligne2["desc_courte"];
+                    ?>
 
-                    <div class="col-sm-3">
-                    <p><small><?= $textechoix?></small></p>
-                    <a href="page.php?story=<?=$title?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
+                    <div class="col-sm-<?=$nbchoix?>">
+                    <p><small><?= $descourte?></small></p>
+                    <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
                 </div>
                 <?php
                 }
