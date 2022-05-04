@@ -10,7 +10,9 @@
     <title>Histoires croquignolesques - ajout d'une page</title>
 </head>
     <body>
-      <?php include("includes/navbar.php"); ?>
+      <?php include("includes/navbar.php");
+            include ("includes/connect.php");
+      ?>
 
           <h2 class="text-center">Ajout d'une page</h2>
           <div class="well">
@@ -26,13 +28,44 @@
               <div class="form-group">
                 <label class="col-sm-4 control-label">Titre de l'histoire</label>
                 <div class="col-sm-6">
-                  <input type="number" name="pageActuelle" value="" class="form-control" placeholder="Entrez le numéro de page" required autofocus>
+                <select name='titreHistoire' id='histoire_select' required>
+                    <option value="">--Choisissez l'histoire à laquelle appartient cette page--</option>
+                    <?php 
+                      $maRequete = "SELECT * FROM histoires";
+                      $rep = $BDD->query($maRequete);
+                      $nbHistoire = $rep->rowCount(); 
+                      for ($i=1;$i<=$nbHistoire;$i++)
+                      {
+                        $ligne = $rep->fetch();
+                        $title = $ligne["nom_histoire"];
+                        ?>
+                        <option value="numeroPage"><?=$title?></option>
+                        <?php
+                      }
+                    ?>
                 </div>
               </div>
+                    
               <div class="form-group">
                 <label class="col-sm-4 control-label">Titre de l'histoire</label>
                 <div class="col-sm-6">
-                  <input type="number" name="pageEntree" value="" class="form-control" placeholder="Entrez le numéro de page qui vous a amené là" required autofocus>
+                  <select name='pageDepart' id='page_select' required>
+                    <option value="">--Choisissez la page qui amène a cette page--</option>
+                    <option value="firstPage">Première page</option>
+                    <?php 
+                      $req="SELECT COUNT('id_pages') FROM histoires";
+                      $rep=$BDD->query($req);
+                      for ($i=1;$i<=$rep;$i++)
+                      {
+                        ?>
+                        <option value="numeroPage"><?=$i?></option>
+                        <?php
+                      }
+                    ?>
+                    
+                    
+
+                  </select>
                 </div>
               </div>
               <div class="form-group">

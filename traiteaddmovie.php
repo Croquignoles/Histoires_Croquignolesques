@@ -18,6 +18,6 @@ $response->execute(array(
  'description_histoire' => $description,
  'image_histoire' => $image,
 ));
-header("Location: pages_add.php");
+header("Location: index.php");
 
 ?>

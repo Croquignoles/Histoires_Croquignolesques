@@ -13,7 +13,6 @@ for ($i=1; $i <= $nbhistoire; $i++) {
     $ligne = $response->fetch();
     $id = $ligne["id_histoire"];
     $title = $ligne["nom_histoire"];
-    $pages = $ligne["nb_pages"];
     $des_courte = $ligne["description_histoire"];
     $image = $ligne["image_histoire"];
 }
