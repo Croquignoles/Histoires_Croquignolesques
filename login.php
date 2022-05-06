@@ -12,7 +12,7 @@
 <body>
         <?php include("includes/navbar.php");
         ?>
-
+ 
         <h2 class="text-center">Connexion</h2>
 
         

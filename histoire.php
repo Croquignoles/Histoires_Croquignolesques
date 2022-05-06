@@ -54,7 +54,7 @@ else
                     <p><small><?= $des_courte?></small></p>
                 </div>
                 <div class="col-md-7 col-sm-5">
-                <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button" onclick="<?=addGameFunction($BDD, $id,$nbParties)?>"> Let's go !</a>
+                <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button" > Let's go !</a>
                 </div>
             </div>
         </div>
