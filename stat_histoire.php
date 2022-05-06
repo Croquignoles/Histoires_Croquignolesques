@@ -18,9 +18,18 @@ $id_histoire = $_GET['id'];
 
 <body>
 <?php 
-include("histoire.php");
-
 require_once("includes/connect.php");
+$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id_histoire";
+
+$response = $BDD->query($maRequete1);
+$ligne = $response->fetch();
+$id = $ligne["id_histoire"];
+$nbParties = $ligne["nb_parties"];
+$nbVictoires=$ligne["nb_victoires"];
+$nbEchecs=$ligne["nb_echecs"];
+
+
+
 // Dans la requête, on remplace les valeurs issues de variables par des ?
 // On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
 if(!empty($_SESSION['user']))
@@ -32,8 +41,17 @@ else
     
 <p><strong>Nombre de partie jouées :</strong> <?=$nbParties?></p>
 <p><strong>Nombre de victoires :</strong> <?=$nbVictoires?></p>
-<p><strong>Nombre d'échecs' :</strong> <?=$nbEchecs?></p>
-<p><strong>Pourcentage de victoire :</strong> <?=$nbVictoires/($nbVictoires+$nbEchecs)?></p>
+<p><strong>Nombre d'échecs :</strong> <?=$nbEchecs?></p>
+<p><strong>Pourcentage de victoire :</strong> <?php
+if($nbVictoires+$nbEchecs==0)
+{
+    ?> 0 %<?php
+}
+else 
+{
+    $nbVictoires/($nbVictoires+$nbEchecs) ;?> %<?php
+}
+    ?></p>
 
 
 </div>
