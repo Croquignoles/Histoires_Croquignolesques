@@ -45,13 +45,13 @@ else
             <form class="form-horizontal" role="form" enctype="multipart/form-data" action="modif_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
-                    <input type='button' value="Modifier une histoire">
+                <a href="modif_histoire.php?id=<?=$id_histoire?>" class="btn btn-primary" role="button" > Modifier histoire</a>
                 </div>
             </div>
             <form class="form-horizontal" role="form" enctype="multipart/form-data" action="stat_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
-                    <input type='button' value="Voir vos statistiques">
+                <a href="stat_histoire.php?id=<?=$id_histoire?>" class="btn btn-danger" role="button" > Statistique histoire</a>
                 </div>
             </div>
 </div>

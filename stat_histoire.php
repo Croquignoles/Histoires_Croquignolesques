@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php if(!isset($_SESSION)){
+    session_start();
+}
+$id_histoire = $_GET['id'];
+?>
 <!doctype html>
 <html>
 
@@ -15,8 +19,7 @@
 <body>
 <?php 
 include("histoire.php");
-include("page.php");
-include("includes/connect.php");
+
 require_once("includes/connect.php");
 // Dans la requête, on remplace les valeurs issues de variables par des ?
 // On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
