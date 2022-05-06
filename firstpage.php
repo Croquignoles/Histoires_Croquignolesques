@@ -39,6 +39,7 @@ else
 
 </nav>
 
+<div class="container">
         <div class="jumbotron">
             <div class="row">
                 <div class="col- 1">
@@ -66,7 +67,7 @@ else
                 
             </div>
         </div>
-
+            </div>
         
     <footer class="footer">
     Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.

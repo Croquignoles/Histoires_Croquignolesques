@@ -1,6 +1,7 @@
 <?php if(!isset($_SESSION)){
     session_start();
 }
+$id_histoire = $_GET['id'];
 ?>
 <!doctype html>
 <html>
@@ -29,33 +30,31 @@ else
 ?>
 </nav>
 
+
 <article class="container">
             <h1 class="text-center">Bienvenue dans votre interface de mofication des histoires, que voulez vous faire ?</h1>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="suppr_histoire.php" method="post">
+</br>
+</br>
+   
+            <form class="form-horizotal" role="form" enctype="multipart/form-data" action="suppr_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
-                    <input type='button' value="Supprimer une histoire">
+                <a href="suppr_histoire.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Supprimer histoire</a>
                 </div>
             </div>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="modif_histoire.php" method="post">
+            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="modif_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
                     <input type='button' value="Modifier une histoire">
                 </div>
             </div>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="stat_histoire.php" method="post">
+            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="stat_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
                     <input type='button' value="Voir vos statistiques">
                 </div>
             </div>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="cacher_histoire.php" method="post">
-            <div class="form-group">
-                <div class="text-center">
-                    <input type='button' value="Cacher une histoire">
-                </div>
-            </div>
-
+</div>
 
 </article>
 

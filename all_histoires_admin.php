@@ -27,22 +27,8 @@ else
     $response = $BDD->query($maRequete);
     $nbhistoire = $response->rowCount(); ?>
 <div class="container">
-<header>
-  <h1 class="center">Bienvenue sur le site Croquignolerie !</h1>
-  <h5 class="def"> <em>Croquignolesque (adjectif) : de Croquignol, personnage de bande dessinée. <br/>
-  Ridicule, risible.</em></h5>
 
-  <br/>
-  <h4 class="center">Ce site va vous donner l'opportunité d'incarner un personnage et parcourir des histoires plus rocamboloesques les unes que les autres.
-      <br/>
-      Veuillez à vous connecter pour pouvoir accéder aux histoires. <br/>
-      Si vous êtes un administrateur, vous pourrez aussi les créer ou les modifier vous même !  <span class ="glyphicon glyphicon-thumbs-up"> </span>
-  </h4>
-</header>
-</nav>
-
-<?php 
-    $maRequete = "SELECT * FROM histoires";
+<?php     $maRequete = "SELECT * FROM histoires";
     $response = $BDD->query($maRequete);
     $tab = $response->fetchAll();
     foreach ($tab as $key => $ligne) {
@@ -50,24 +36,13 @@ else
         $title = $ligne["nom_histoire"];
         $des_courte = $ligne["description_histoire"];
         ?>
-
-
-
-
 <article>
             <?php if(!empty($_SESSION['user'])) {?>
-                <h3><a class="movieTitle" href="histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
-
-            <?php 
-                echo $des_courte;
-                } else {?>
-                <h3><?=$title ?></h3>
-            <p class="movieContent"><?= $des_courte?></p>
-
+                <h3><a class="movieTitle" href="gerer_histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
+                <?php echo $des_courte; }?>
+            
 </article>
-<?php } 
-
-}?>
+<?php }?>
 </div>
 
 
