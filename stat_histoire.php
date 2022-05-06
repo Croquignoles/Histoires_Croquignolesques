@@ -39,10 +39,10 @@ else
     ?>
 <div>
     
-<p><strong>Nombre de partie jouées :</strong> <?=$nbParties?></p>
-<p><strong>Nombre de victoires :</strong> <?=$nbVictoires?></p>
-<p><strong>Nombre d'échecs :</strong> <?=$nbEchecs?></p>
-<p><strong>Pourcentage de victoire :</strong> <?php
+<p class="center"><strong>Nombre de partie jouées :</strong> <?=$nbParties?></p>
+<p class="center"><strong>Nombre de victoires :</strong> <?=$nbVictoires?></p>
+<p class="center"><strong>Nombre d'échecs :</strong> <?=$nbEchecs?></p>
+<p class="center"><strong>Pourcentage de victoire :</strong> <?php
 if($nbVictoires+$nbEchecs==0)
 {
     ?> 0 %<?php

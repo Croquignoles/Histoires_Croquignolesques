@@ -17,7 +17,7 @@ session_start();
     include("includes/navbar_connected.php"); 
 else 
     include("includes/navbar.php");
-?> ?>
+?> 
 
           <h2 class="text-center">Ajout d'une histoire</h2>
           <div class="well">
