@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php if(!isset($_SESSION)){
+    session_start();
+}
+?>
 <!doctype html>
 <html> 
 
@@ -13,6 +16,8 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     $des_courte = $ligne["description_histoire"];
     $image = $ligne["image_histoire"];
     $nbParties = $ligne["nb_parties"];
+    $nbVictoires=$ligne["nb_victoires"];
+    $nbEchecs=$ligne["nb_echecs"];
 
     function addGameFunction($BDD, $id, $actualNbParties)
 {
@@ -23,6 +28,8 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     ));
 
 }
+
+
 ?>
 
 
