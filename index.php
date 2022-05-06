@@ -11,25 +11,34 @@
     <link href="css/style.css" rel="stylesheet">
     <title>Histoire Croquignolesques</title>
 </head>
-<body>
 
+<body>
 <?php 
-include("includes/connect.php");
+
+require_once("includes/connect.php");
 // Dans la requête, on remplace les valeurs issues de variables par des ?
 // On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
-
-
 if(!empty($_SESSION['user']))
-    include("includes/navbar_connected.php"); 
+    require_once("includes/navbar_connected.php"); 
 else 
-    include("includes/navbar.php");
-?>
+    require_once("includes/navbar.php");
     
-    <?php $maRequete = "SELECT * FROM histoires";
+    $maRequete = "SELECT * FROM histoires";
     $response = $BDD->query($maRequete);
     $nbhistoire = $response->rowCount(); ?>
+<div class="container">
+<header>
+  <h1 class="center">Bienvenue sur le site Croquignolerie !</h1>
+  <h5 class="def"> <em>Croquignolesque (adjectif) : de Croquignol, personnage de bande dessinée. <br/>
+  Ridicule, risible.</em></h5>
 
-
+  <br/>
+  <h4 class="center">Ce site va vous donner l'opportunité d'incarner un personnage et parcourir des histoires plus rocamboloesques les unes que les autres.
+      <br/>
+      Veuillez à vous connecter pour pouvoir accéder aux histoires. <br/>
+      Si vous êtes un administrateur, vous pourrez aussi les créer ou les modifier vous même !  <span class ="glyphicon glyphicon-thumbs-up"> </span>
+  </h4>
+</header>
 </nav>
 
 <?php for ($i=1; $i <= $nbhistoire; $i++) { 
@@ -40,6 +49,9 @@ else
     $title = $ligne["nom_histoire"];
     $des_courte = $ligne["description_histoire"];
     ?>
+
+
+
 <article>
             <?php if(!empty($_SESSION['user'])) {?>
                 <h3><a class="movieTitle" href="histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
@@ -54,6 +66,7 @@ else
 <?php } 
 
 }?>
+</div>
 
 
                   
