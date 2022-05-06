@@ -19,17 +19,6 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     $nbVictoires=$ligne["nb_victoires"];
     $nbEchecs=$ligne["nb_echecs"];
 
-    function addGameFunction($BDD, $id, $actualNbParties)
-{
-    $req = $BDD->prepare("UPDATE histoires SET nb_parties = :nbParties WHERE id_histoire=:id");
-    $req->execute(array(
-    'nbParties' => $actualNbParties + 1,
-    'id' => $id,
-    ));
-
-}
-
-
 ?>
 
 
@@ -45,7 +34,7 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 
 <?php 
 
-
+include("functions.php");
 
 if(!empty($_SESSION['user']))
     include("includes/navbar_connected.php"); 
