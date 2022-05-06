@@ -35,6 +35,14 @@ if(!empty($_SESSION['user']))
     include("includes/navbar_connected.php"); 
 else 
     include("includes/navbar.php"); 
+
+include("functions.php");
+$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
+
+    $response = $BDD->query($maRequete1);
+    $ligne = $response->fetch();
+    $nbParties = $ligne["nb_parties"];
+addGameFunction($BDD, $id, $nbParties)
 ?>
 
 </nav>
