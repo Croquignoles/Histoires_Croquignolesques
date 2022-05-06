@@ -41,14 +41,16 @@ else
 </header>
 </nav>
 
-<?php for ($i=1; $i <= $nbhistoire; $i++) { 
-    $maRequete = "SELECT * FROM histoires WHERE id_histoire = $i";
+<?php 
+    $maRequete = "SELECT * FROM histoires";
     $response = $BDD->query($maRequete);
-    $ligne = $response->fetch();
-    $id = $ligne["id_histoire"];
-    $title = $ligne["nom_histoire"];
-    $des_courte = $ligne["description_histoire"];
-    ?>
+    $tab = $response->fetchAll();
+    foreach ($tab as $key => $ligne) {
+        $id = $ligne["id_histoire"];
+        $title = $ligne["nom_histoire"];
+        $des_courte = $ligne["description_histoire"];
+        ?>
+
 
 
 

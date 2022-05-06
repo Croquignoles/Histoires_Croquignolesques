@@ -30,25 +30,16 @@ else
 ?>
 </nav>
 
-<?php 
-function confirmAction() {
-    $confirmAction = confirm("Tu veux supp?");
-    if ($confirmAction) {
-      alert("C fé yo");
-    } else {
-      alert("Ok pas grv");
-    }
-  }
-?>
 
 <article class="container">
             <h1 class="text-center">Bienvenue dans votre interface de mofication des histoires, que voulez vous faire ?</h1>
-
-
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="suppr_histoire.php?id=<?=$id_histoire?>" method="post">
+</br>
+</br>
+   
+            <form class="form-horizotal" role="form" enctype="multipart/form-data" action="suppr_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
-                <button onclick="confirmAction()">Supprimer histoire</button>
+                <a href="suppr_histoire.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Supprimer histoire</a>
                 </div>
             </div>
             <form class="form-horizontal" role="form" enctype="multipart/form-data" action="modif_histoire.php?id=<?=$id_histoire?>" method="post">
@@ -63,13 +54,7 @@ function confirmAction() {
                     <input type='button' value="Voir vos statistiques">
                 </div>
             </div>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="cacher_histoire.php?id=<?=$id_histoire?>" method="post">
-            <div class="form-group">
-                <div class="text-center">
-                    <input type='button' value="Cacher une histoire">
-                </div>
-            </div>
-
+</div>
 
 </article>
 

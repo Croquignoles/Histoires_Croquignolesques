@@ -28,14 +28,14 @@ else
     $nbhistoire = $response->rowCount(); ?>
 <div class="container">
 
-<?php for ($i=1; $i <= $nbhistoire; $i++) { 
-    $maRequete = "SELECT * FROM histoires WHERE id_histoire = $i";
+<?php     $maRequete = "SELECT * FROM histoires";
     $response = $BDD->query($maRequete);
-    $ligne = $response->fetch();
-    $id = $ligne["id_histoire"];
-    $title = $ligne["nom_histoire"];
-    $des_courte = $ligne["description_histoire"];
-    ?>
+    $tab = $response->fetchAll();
+    foreach ($tab as $key => $ligne) {
+        $id = $ligne["id_histoire"];
+        $title = $ligne["nom_histoire"];
+        $des_courte = $ligne["description_histoire"];
+        ?>
 <article>
             <?php if(!empty($_SESSION['user'])) {?>
                 <h3><a class="movieTitle" href="gerer_histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
