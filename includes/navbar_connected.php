@@ -31,7 +31,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="logout.php">Se déconnecter</a></li>
                                 </ul>
-                                <li><a href="#">Nous contacter</a></li>
+                                <li><a href="contact.php">Nous contacter</a></li>
 
                             </li>
                                     </ul>

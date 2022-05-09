@@ -6,8 +6,9 @@
     text-align: center;
 }
 
-.movieTitle:hover,
-.movieTitle:focus {
+
+.Title:hover,
+.Title:focus {
     text-decoration: none;
 }
 
@@ -28,4 +29,6 @@
 .def{
     text-align: center;
     color: dimgray;
+    
 }
+
