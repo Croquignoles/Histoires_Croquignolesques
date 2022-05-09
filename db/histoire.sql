@@ -35,6 +35,8 @@ CREATE TABLE `histoires` (
   `nb_parties` int(11) DEFAULT 0,
   `nb_victoires` int(11) NOT NULL DEFAULT 0,
   `nb_echecs` int(11) NOT NULL DEFAULT 0
+  `nb_echecs` int(11) NOT NULL DEFAULT 
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

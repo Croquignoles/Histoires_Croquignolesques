@@ -4,7 +4,7 @@
 
 ?>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar fixed-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="index.php"> <span class="glyphicon glyphicon-send"></span> Croquignolerie <span class="glyphicon glyphicon-send"></span>

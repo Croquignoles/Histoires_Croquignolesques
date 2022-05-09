@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <title>Histoire Croquignolesques</title>
 </head>
 
@@ -73,45 +72,33 @@ else
 </div>
 
 <div class="container">
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="images/defonce.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+<div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
+      <ol class="carousel-indicators">
+        <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
+        <li data-slide-to="1" data-target="#carousel-example-generic" class=""></li>
+        <li data-slide-to="2" data-target="#carousel-example-generic" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img alt="First slide" data-src="holder.js/900x500/auto/#777:#555/text:First slide" src="images/defonce.jpg">
+        </div>
+        <div class="item">
+          <img alt="Second slide" data-src="holder.js/900x500/auto/#666:#444/text:Second slide" src="images/defonce.jpg">
+        </div>
+        <div class="item">
+          <img alt="Third slide" data-src="holder.js/900x500/auto/#555:#333/text:Third slide" src="images/defonce.jpg">
+        </div>
       </div>
+      <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a data-slide="next" href="#carousel-example-generic" class="right carousel-control">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
-    <div class="carousel-item">
-      <img src="images/defonce.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="images/defonce.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
-</div>
+</body>
+</html>
 
                   
         <footer class="footer">
@@ -121,7 +108,6 @@ else
     <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
 <!-- JavaScript Boostrap plugin -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script></body>
 
 </html>
