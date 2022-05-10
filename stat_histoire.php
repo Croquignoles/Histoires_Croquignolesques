@@ -49,7 +49,7 @@ if($nbVictoires+$nbEchecs==0)
 }
 else 
 {
-    $nbVictoires/($nbVictoires+$nbEchecs) ;?> %<?php
+   echo ($nbVictoires/($nbVictoires+$nbEchecs))*100 ;?> %<?php
 }
     ?></p>
 

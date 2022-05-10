@@ -9,6 +9,7 @@ $idhistoire = $_GET["idstory"];
 <html> 
 
 <?php include("includes/connect.php"); 
+    include("functions.php");
 
 $maRequete = "SELECT * FROM pages WHERE id_histoire = $idhistoire AND id_pages = $idpage";
                 $response = $BDD->query($maRequete);
@@ -17,7 +18,13 @@ $maRequete = "SELECT * FROM pages WHERE id_histoire = $idhistoire AND id_pages =
                     $descourte1 = $ligne["desc_courte"];
                     $impasseOuVictoire=$ligne ["est_victoire_echec"];
                     $idPageDepart=$ligne["id_page_depart"];
-                    ?>
+
+$reqHistoire="SELECT * FROM histoires WHERE id_histoire=$idhistoire";
+    $repHistoire=$BDD->query($reqHistoire);
+    $ligneHistoire=$repHistoire->fetch();
+    $echecs=$ligneHistoire["nb_echecs"];
+    $victoires=$ligneHistoire["nb_victoires"];                  
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,6 +58,7 @@ else
                     </div>
                 </article>
                 <?php
+                addEchecFunction($BDD,$idhistoire,$echecs);
                     
                 }
                 elseif($impasseOuVictoire==2)
@@ -62,6 +70,7 @@ else
                     </div>
                 </article>
                     <?php
+                        addVictoireFunction($BDD,$idhistoire,$victoires);
                 }
                 $maRequete2 = "SELECT * FROM pages WHERE id_histoire = $idhistoire AND id_page_depart = $idpage";
                 $response2 = $BDD->query($maRequete2);
