@@ -16,7 +16,6 @@ $maRequete = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart IS 
     $idpage = $ligne["id_pages"];
     $texte = $ligne["text_page"];
     $idhistoire = $ligne["id_histoire"];
-    $idpadedepart = $ligne["id_page_depart"];
 ?>
 
 <head>
