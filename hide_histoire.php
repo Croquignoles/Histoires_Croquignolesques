@@ -75,13 +75,13 @@ else
      
 }
 
-
 ?>
 
-
-
+</br>
+<div class="text-center">
 <a href="all_histoires_admin.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Retour à la gestion des histoires</a>
-
+</div>
+</br>
 
 
 </div>
