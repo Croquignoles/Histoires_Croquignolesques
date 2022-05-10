@@ -14,12 +14,12 @@ $maRequete = "SELECT * FROM pages WHERE id_pages = 1";
     $ligne = $response->fetch();
     $idpage = $ligne["id_pages"];
     $texte = $ligne["text_page"];
-    $idhistoire = $ligne["id_histoire"];
+    $idhistoire = $ligne["id_histoire"]; 
 
-/*$reqLien="SELECT * FROM lien_pages WHERE id_page_depart=$idpage AND id_histoire=$idhistoire";
+/*$reqLien="SELECT * FROM liens_pages WHERE id_page_depart=1 AND id_histoire=$idhistoire";
     $repLien=$BDD->query($reqLien);
     $ligneLien=$repLien->fetch();
-    $id_page_arrivee=["id_page_arrivee"];  */
+    $id_page_arrivee=["id_page_arrivee"]; */  
 ?>
 
 <head>
@@ -40,7 +40,7 @@ else
     include("includes/navbar.php"); 
 
 include("functions.php");
-$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
+/*$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 
     $response = $BDD->query($maRequete1);
     $ligne = $response->fetch();
@@ -57,8 +57,8 @@ addGameFunction($BDD, $id, $nbParties)*/
                     <p><small><?= $texte?></small></p>
                 </div>
                 <?php
-                $maRequete2 = "SELECT * FROM lien_pages WHERE id_histoire = $id AND id_page_depart = $idpage";
-                $response2 = $BDD->query($maRequete2);
+                /*$maRequete2 = "SELECT * FROM liens_pages,pages WHERE id_histoire = $id AND id_page_depart = $idpage";
+                $response2 = $BDD->query($maRequete2); 
                $nbchoix = $response2->rowCount();
                 foreach ($response2 as $ligne2)
                 {
@@ -71,8 +71,8 @@ addGameFunction($BDD, $id, $nbParties)*/
                     <p><small><?= $descourte?></small></p>
                     <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
                 </div>
-                <?php
-                } 
+                <?php 
+                } */
                 
                 ?>
                 
