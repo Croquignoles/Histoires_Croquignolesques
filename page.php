@@ -54,7 +54,7 @@ else
                 ?><div><h3 class="text-center">Au vu de la situation, mon choix n'était peut être pas le bon, mon moral en prend un coup et je décide de rebrousser chemin.</h3></div>
                 <article class="container">
                     <div class="text-center">
-                        <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idPageDepart?>" class="btn btn-danger" role="button" > Retour en arrière </a>
+                        <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpage?>" class="btn btn-danger" role="button" > Retour en arrière </a>
                     </div>
                 </article>
                 <?php
@@ -79,6 +79,7 @@ else
                 foreach ($response2 as $ligne2)
                 {
                     $idpagechoix = $ligne2["id_page_arrivee"];
+                    $idpageretour=$ligne2["id_page_depart"];
                     $maRequete3 = "SELECT * FROM pages WHERE id_pages = $idpagechoix";
                     $response3 = $BDD->query($maRequete3);
                     $ligne3 = $response3->fetch();
