@@ -40,7 +40,7 @@ else
     include("includes/navbar.php"); 
 
 include("functions.php");
-/*$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
+$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 
     $response = $BDD->query($maRequete1);
     $ligne = $response->fetch();
@@ -75,7 +75,7 @@ addGameFunction($BDD, $id, $nbParties)
                     <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
                 </div>
                 <?php 
-                } */
+                } 
                 
                 ?>
                 

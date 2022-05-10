@@ -8,6 +8,7 @@ $id_histoire = $_GET['id'];
 
 <head>
     <meta charset="utf-8">
+    <!-- Les deux lignes en dessous c'est quoi ça??-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,9 +23,6 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id_histoire";
 $response = $BDD->query($maRequete1);
 $ligne = $response->fetch();
 $id = $ligne["id_histoire"];
-$nbParties = $ligne["nb_parties"];
-$nbVictoires=$ligne["nb_victoires"];
-$nbEchecs=$ligne["nb_echecs"];
 
 
 
@@ -34,16 +32,7 @@ if(!empty($_SESSION['user']))
     require_once("includes/navbar_connected.php"); 
 else 
     require_once("includes/navbar.php");
-
-
-$maRequete2 = "SELECT * FROM pages WHERE id_histoire=$id_histoire";
-$response2 = $BDD->query($maRequete2);
-$n = $response2->rowCount();
-if($n==0){ ?>
-    <h3 class="text-center">Cette histoire est vide :( </h3>
-    <?php }
-   
-    ?>
+?>
 
 
 <div class="container">
@@ -51,13 +40,14 @@ if($n==0){ ?>
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"  aria-controls="collapseTwo">
-        Ajouter un nouveau paragraphe </button>
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Ajouter un nouveau paragraphe
+        </button>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-          <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteajoutparaph.php?id=<?=$id_histoire?>" method="post">
+      <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteajoutparaph.php?id=<?=$id_histoire?>" method="post">
               <input type="hidden" name="id" value="">
               <div class="form-group">
                 <label class="col-sm-4 control-label">Description courte du paragraphe</br><em>En gros une phrase d'accroche</em></label>
@@ -73,31 +63,156 @@ if($n==0){ ?>
               </div>
               
               <div class="form-group">
-                <label class="col-sm-4 control-label"> </label>
-                <label for="choix">Le paragraphe sera-t-il sans issue ? </label>
+                <label class="col-sm-4 control-label">Cochez ici si le paragraphe est sans issue : </label>
+                <div class="col-sm-6">
+                <label for="choix"></label>
                 <input type="checkbox" name="is_deadend" value="yes">
+                </div>
               </div>
               </br>
-              <label class="col-sm-4 control-label"> </label>
-              <label for="profession">À quel paragraphe doit-il être rattaché ?</label>
-                <select id="para_depart" name="paradepart" >
-                <option value="">--Choisissez un paragraphe--</option>
-                <option value="cadre">Cadre</option>
-                <option value="fonctionnaire">Fonctionnaire</option>
-                <option value="se">Sans emploi</option>
-                </select>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Cochez ici si le paragraphe est l'issue victorieuse du jeu : </label>
+                <div class="col-sm-6">
+                <label for="choix"></label>
+                <input type="checkbox" name="is_goodend" value="yes">
+                </div>
+              </div>
+              </br>
+              <label class="col-sm-4 control-label">À quel paragraphe doit-il être rattaché ? </label>
+              <label for="relation"></label>                
+              <select id="paradepart" name="paradepart" >
+                <option value="">-- Choisissez un paragraphe --</option>
+                <?php 
+                $maRequete = "SELECT * FROM pages WHERE id_histoire = $id_histoire";
+                $response = $BDD->query($maRequete);
+                $nb = $response->rowCount();
+                $tab = $response->fetchAll();
+                if($nb==0) {
+                ?>
+                <option value="cadre">Aucun paragraphe pour l'instant. Je crée le premier !</option> 
+                <?php
+                } else {
+                foreach ($tab as $key => $ligne) {
+                    $id = $ligne["id_pages"];
+                    $title = $ligne["desc_courte"];
+                    ?>
+                  <option value="cadre"><?=$id?> - <?=$title?></option>
+                <?php } 
+                }?>
+            </select>
 </br>
 </br>
               <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-4 mt-2">
-                  <button type="submit" class="btn btn-default btn-success"><span class="glyphicon glyphicon-save"></span> Enregistrer cette histoire</button>
+                  <button type="submit" class="btn btn-default btn-success"><span class="glyphicon glyphicon-save"></span> Enregistrer ce paragraphe </button>
                 </div>
               </div>
-            </form>
-      </div>
+            </form>      
+        </div>
     </div>
   </div>
 
+  <?php 
+                $maRequete = "SELECT * FROM pages WHERE id_histoire = $id_histoire";
+                $response = $BDD->query($maRequete);
+                $nb = $response->rowCount();
+                $tab = $response->fetchAll();
+                foreach ($tab as $key => $ligne) {
+                    $id = $ligne["id_pages"];
+                    $title = $ligne["desc_courte"]; 
+                    $text = $ligne["text_page"];
+                    $is_deadend = $ligne["est_victoire_echec"];
+                ?>
+                 <div class="card">
+                    <div class="card-header" id="heading<?=$id?>">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<?=$id?>" aria-expanded="false" aria-controls="collapse<?=$id?>">
+                        <?=$title?>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapse<?=$id?>" class="collapse" aria-labelledby="heading<?=$id?>" data-parent="#accordionExample">
+                    <div class="card-body">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traitemodifparaph.php?id=<?=$id_histoire?>" method="post">
+              <input type="hidden" name="id" value="">
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Description courte du paragraphe</br><em>En gros une phrase d'accroche</em></label>
+                <div class="col-sm-6">
+                  <input type="text" name="title" value="<?=$title?>" class="form-control" placeholder="Entrez une courte description du paragraphe" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Description détaillée du paragraphe</label>
+                <div class="col-sm-6">
+                  <textarea name="description" class="form-control" placeholder="Entrez sa description" required> <?=$text?></textarea>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Cochez ici si le paragraphe est sans issue : </label>
+                <div class="col-sm-6">
+                <label for="choix"></label>
+                <?php 
+                if($is_deadend==2){
+                ?><input type="checkbox" name="is_deadend" value="yes" checked>
+                <?php } else {
+                ?> <input type="checkbox" name="is_deadend" value="yes">
+                <?php } ?>
+                </div>
+              </div>
+              </br>
+              <div class="form-group">
+                <label class="col-sm-4 control-label">Cochez ici si le paragraphe est l'issue victorieuse du jeu : </label>
+                <div class="col-sm-6">
+                <label for="choix"></label>
+                <?php 
+                if($is_deadend==0){
+                ?><input type="checkbox" name="is_deadend" value="yes" checked>
+                <?php } else {
+                ?> <input type="checkbox" name="is_deadend" value="yes">
+                <?php } ?>
+                </div>
+              </div>
+              </br>
+              <label class="col-sm-4 control-label">À quel paragraphe doit-il être rattaché ? </label>
+              <label for="relation"></label>                
+              <select id="paradepart" name="paradepart" >
+                <?php 
+                $maRequete = "SELECT * FROM pages WHERE id_histoire = $id_histoire";
+                $response = $BDD->query($maRequete);
+                $nb = $response->rowCount();
+                $tab = $response->fetchAll();
+                if($nb==0) {
+                ?>
+                <option value="">-- Choisissez un paragraphe --</option>
+                <option value="cadre">Aucun paragraphe pour l'instant. Je crée le premier !</option> 
+                <?php
+                } else {
+                ?>
+                <option value=""><?=$id?> - <?=$title?></option>
+                <?php 
+                foreach ($tab as $key => $ligne) {
+                    $id2 = $ligne["id_pages"];
+                    $title2 = $ligne["desc_courte"];
+                    ?>
+                  <option value="cadre"><?=$id2?> - <?=$title2?></option>
+                <?php } 
+                }?>
+            </select>
+            </br>
+            </br>
+              <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-4 mt-2">
+                  <button type="submit" class="btn btn-default btn-success"><span class="glyphicon glyphicon-refresh"></span> Modifier ce paragraphe </button>
+                </div>
+              </div>
+            </form> 
+                    </div>
+                    </div>
+                </div>
+                
+            <?php } ?>
+ 
 </div>
 </div>
 
