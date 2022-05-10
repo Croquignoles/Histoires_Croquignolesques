@@ -17,7 +17,7 @@ $maRequete = "SELECT * FROM pages WHERE id_histoire = $idhistoire AND id_pages =
                     $textechoix1 = $ligne["text_page"];
                     $descourte1 = $ligne["desc_courte"];
                     $impasseOuVictoire=$ligne ["est_victoire_echec"];
-                    $idPageDepart=$ligne["id_page_depart"];
+
 
 $reqHistoire="SELECT * FROM histoires WHERE id_histoire=$idhistoire";
     $repHistoire=$BDD->query($reqHistoire);

@@ -3,19 +3,23 @@ session_start();
 $id = $_GET["id"];
 $titrehistoire = $_GET["story"];
 ?>
-
 <!doctype html>
 <html> 
-
+ 
 <?php include("includes/connect.php"); 
 
-$maRequete = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart IS NULL";
+$maRequete = "SELECT * FROM pages WHERE id_pages = 1";
  
     $response = $BDD->query($maRequete);
     $ligne = $response->fetch();
     $idpage = $ligne["id_pages"];
     $texte = $ligne["text_page"];
     $idhistoire = $ligne["id_histoire"];
+
+/*$reqLien="SELECT * FROM lien_pages WHERE id_page_depart=$idpage AND id_histoire=$idhistoire";
+    $repLien=$BDD->query($reqLien);
+    $ligneLien=$repLien->fetch();
+    $id_page_arrivee=["id_page_arrivee"];  */
 ?>
 
 <head>
@@ -41,7 +45,7 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     $response = $BDD->query($maRequete1);
     $ligne = $response->fetch();
     $nbParties = $ligne["nb_parties"];
-addGameFunction($BDD, $id, $nbParties)
+addGameFunction($BDD, $id, $nbParties)*/
 ?>
 
 </nav>
@@ -53,12 +57,12 @@ addGameFunction($BDD, $id, $nbParties)
                     <p><small><?= $texte?></small></p>
                 </div>
                 <?php
-                $maRequete2 = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart = $idpage";
+                $maRequete2 = "SELECT * FROM lien_pages WHERE id_histoire = $id AND id_page_depart = $idpage";
                 $response2 = $BDD->query($maRequete2);
-                $nbchoix = $response2->rowCount();
+               $nbchoix = $response2->rowCount();
                 foreach ($response2 as $ligne2)
                 {
-                    $idpagechoix = $ligne2["id_pages"];
+                    $idpagechoix = $ligne2["id_page_arrivee"];
                     $textechoix = $ligne2["text_page"];
                     $descourte = $ligne2["desc_courte"];
                     ?>
@@ -68,7 +72,7 @@ addGameFunction($BDD, $id, $nbParties)
                     <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
                 </div>
                 <?php
-                }
+                } 
                 
                 ?>
                 
