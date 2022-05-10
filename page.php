@@ -72,30 +72,29 @@ else
                     <?php
                         addVictoireFunction($BDD,$idhistoire,$victoires);
                 }
-                $maRequete2 = "SELECT * FROM pages WHERE id_histoire = $idhistoire AND id_page_depart = $idpage";
+                
+                $maRequete2 = "SELECT * FROM liens_pages WHERE id_histoire = $idhistoire AND id_page_depart = $idpage";
                 $response2 = $BDD->query($maRequete2);
                 $nbchoix = $response2->rowCount();
                 foreach ($response2 as $ligne2)
                 {
-                    $idpagechoix = $ligne2["id_pages"];
-                    $textechoix = $ligne2["text_page"];
-                    $descourte = $ligne2["desc_courte"];
-                    
-                    
-
+                    $idpagechoix = $ligne2["id_page_arrivee"];
+                    $maRequete3 = "SELECT * FROM pages WHERE id_pages = $idpagechoix";
+                    $response3 = $BDD->query($maRequete3);
+                    $ligne3 = $response3->fetch();
+                    $textechoix = $ligne3["text_page"];
+                    $descourte = $ligne3["desc_courte"];
                     ?>
 
                     <div class="col-sm-<?=$nbchoix?>">
                     <p><small><?= $descourte?></small></p>
                     <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
-                    </div>
+                </div>
                 <?php
-                    
-                }
-                
+                } 
                 
                 ?>
-                
+
             </div>
         </div>
 
