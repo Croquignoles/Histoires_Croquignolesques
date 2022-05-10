@@ -61,7 +61,7 @@ else
             <form class="form-horizontal" role="form" enctype="multipart/form-data" action="hide_histoire.php?id=<?=$id_histoire?>" method="post">
             <div class="form-group">
                 <div class="text-center">
-                <a href="hide_histoire.php?id=<?=$id_histoire?>" class="btn btn-success" role="button" > Cacher cette histoire </a>
+                <a href="hide_histoire.php?id=<?=$id_histoire?>" class="btn btn-success" role="button" > Cacher cette histoire ou la rendre visible </a>
                 </div>
             </div>
 </div>

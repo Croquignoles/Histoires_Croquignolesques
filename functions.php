@@ -28,11 +28,11 @@ $req = $BDD->prepare("UPDATE histoires SET nb_victoires = :nbVictoires WHERE id_
 
 }
 
-function hideHistoire($BDD,$id)
+function hideHistoire($BDD,$id,$trueOrFalse)
 {
-    $req = $BDD->prepare("UPDATE histoires SET isHidden = :cache WHERE is_histoire=:id");
+    $req = $BDD->prepare("UPDATE histoires SET isHidden = :cache WHERE id_histoire=:id");
     $req->execute(array(
-        'isHidden'=>1,
+        'cache'=>$trueOrFalse,
         'id'=>$id,
 
 

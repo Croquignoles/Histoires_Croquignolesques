@@ -2,11 +2,18 @@
     session_start();
 
 include("includes/connect.php");
-include("ajax.js");
-include("ajax.php");
+include("functions.php");
+
 $id_histoire = $_GET['id'];
 
-
+if(isset($_POST['cacher']))
+    {
+        hideHistoire($BDD,$id_histoire,1);
+    }
+if(isset($_POST['reveler']))
+    {
+        hideHistoire($BDD,$id_histoire,0);
+    }
 }?>
 
 <!doctype html>
@@ -42,24 +49,33 @@ else
 <?php 
 if($isHidden==0)
 {
+    
     ?>
     <article>
-    <div class="text-center">
-        <a href="index.php" onclick=myAjax() class="btn btn-warning" role="button" > Cacher cette histoire </a>
-    </div>
+    <form class="center" method="post" >
+        <input class="btn btn-warning" type="submit" name="cacher" value="Cacher cette histoire"/>
+    </form>
+    
     </article>
     <?php
+    
+    
 }
 else
 {
+   
     ?>
     <article>
-    <div class="text-center">
-        <a href="index.php" class="btn btn-info" role="button" > Rendre visible cette histoire </a>
-    </div>
+    <form class="center" method="post" >
+        <input class="btn btn-success" type="submit" name="reveler" value="Rendre visible cette histoire"/>
+    </form>
     </article>
     <?php
+    
+     
 }
+
+
 ?>
 
 
