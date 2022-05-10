@@ -32,38 +32,28 @@ else
 
 
 <article class="container">
-            <h1 class="text-center">Bienvenue dans votre interface de mofication des histoires, que voulez vous faire ?</h1>
+            <h1 class="text-center">Bienvenue dans votre interface de modification des histoires, que voulez vous faire ?</h1>
 </br>
 </br>
-   
-            <form class="form-horizotal" role="form" enctype="multipart/form-data" action="suppr_histoire.php?id=<?=$id_histoire?>" method="post">
-            <div class="form-group">
-                <div class="text-center">
+<div class="text-center">
+
                 <a href="suppr_histoire.php?id=<?=$id_histoire?>" class="btn btn-danger" role="button" > Supprimer histoire</a>
                 </div>
-            </div>
+
 </br>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="modif_histoire.php?id=<?=$id_histoire?>" method="post">
-            <div class="form-group">
                 <div class="text-center">
-                <a href="modif_histoire.php?id=<?=$id_histoire?>" class="btn btn-primary" role="button" > Modifier histoire</a>
+                <a href="modif_histoire.php?id=<?=$id_histoire?>" class="btn btn-primary" > Modifier histoire</a>
                 </div>
-            </div>
             </br>
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="stat_histoire.php?id=<?=$id_histoire?>" method="post">
-            <div class="form-group">
+
                 <div class="text-center">
                 <a href="stat_histoire.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Voir les stats de l'histoire</a>
                 </div>
-            </div>
             </br>
 
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="hide_histoire.php?id=<?=$id_histoire?>" method="post">
-            <div class="form-group">
                 <div class="text-center">
                 <a href="hide_histoire.php?id=<?=$id_histoire?>" class="btn btn-success" role="button" > Cacher cette histoire </a>
                 </div>
-            </div>
 </div>
 
 </article>

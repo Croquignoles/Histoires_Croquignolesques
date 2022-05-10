@@ -1,6 +1,6 @@
 <?php 
 include("includes/connect.php");
-include("movie_add.php");
+include("histoire_add.php");
 
 $title = $_POST['title'];
 $description = $_POST['description'];

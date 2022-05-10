@@ -8,7 +8,6 @@ $id_histoire = $_GET['id'];
 
 <head>
     <meta charset="utf-8">
-    <!-- Les deux lignes en dessous c'est quoi ça??-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +19,6 @@ $id_histoire = $_GET['id'];
 <?php 
 require_once("includes/connect.php");
 $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id_histoire";
-
 $response = $BDD->query($maRequete1);
 $ligne = $response->fetch();
 $id = $ligne["id_histoire"];
@@ -54,35 +52,42 @@ if($n==0){ ?>
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"  aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </button>
+        Ajouter un nouveau paragraphe </button>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-          Nouveau paragraphe 
-          <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteaddmovie.php" method="post">
+          <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteajoutparaph.php?id=<?=$id_histoire?>" method="post">
               <input type="hidden" name="id" value="">
               <div class="form-group">
-                <label class="col-sm-4 control-label">Titre de l'histoire</label>
+                <label class="col-sm-4 control-label">Description courte du paragraphe</br><em>En gros une phrase d'accroche</em></label>
                 <div class="col-sm-6">
-                  <input type="text" name="title" value="" class="form-control" placeholder="Entrez le titre de l'histoire" required autofocus>
+                  <input type="text" name="title" value="" class="form-control" placeholder="Entrez une courte description du paragraphe" required autofocus>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-4 control-label">Description de l'histoire</label>
+                <label class="col-sm-4 control-label">Description détaillée du paragraphe</label>
                 <div class="col-sm-6">
                   <textarea name="description" class="form-control" placeholder="Entrez sa description" required> </textarea>
                 </div>
               </div>
               
               <div class="form-group">
-                <label class="col-sm-4 control-label">Image associée </label>
-                <div class="col-sm-4">
-                  <input class="form-control" type="file" name="image" />
-                </div>
+                <label class="col-sm-4 control-label"> </label>
+                <label for="choix">Le paragraphe sera-t-il sans issue ? </label>
+                <input type="checkbox" name="is_deadend" value="yes">
               </div>
               </br>
+              <label class="col-sm-4 control-label"> </label>
+              <label for="profession">À quel paragraphe doit-il être rattaché ?</label>
+                <select id="para_depart" name="paradepart" >
+                <option value="">--Choisissez un paragraphe--</option>
+                <option value="cadre">Cadre</option>
+                <option value="fonctionnaire">Fonctionnaire</option>
+                <option value="se">Sans emploi</option>
+                </select>
+</br>
+</br>
               <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-4 mt-2">
                   <button type="submit" class="btn btn-default btn-success"><span class="glyphicon glyphicon-save"></span> Enregistrer cette histoire</button>
@@ -92,20 +97,7 @@ if($n==0){ ?>
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
+
 </div>
 </div>
 
