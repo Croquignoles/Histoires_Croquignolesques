@@ -2,21 +2,18 @@
     session_start();
 
 include("includes/connect.php");
+include("functions.php");
+
 $id_histoire = $_GET['id'];
 
-$requete = $BDD->prepare('UPDATE histoires SET ishidden WHERE id_histoire=:id';
-$response = $BDD->prepare($requete);
-$response->execute(array(
- 'id' => $id_histoire
-));
-
-$req = $bdd->prepare('UPDATE `users` SET `name` = :username WHERE id = :id’);
-$req->execute(array(
- 'username' => $name,
- 'id' => $id
-));
-
-
+if(isset($_POST['cacher']))
+    {
+        hideHistoire($BDD,$id_histoire,1);
+    }
+if(isset($_POST['reveler']))
+    {
+        hideHistoire($BDD,$id_histoire,0);
+    }
 }?>
 
 <!doctype html>
@@ -34,7 +31,10 @@ $req->execute(array(
 
 <body>
 <?php 
-
+$req="SELECT * FROM histoires WHERE id_histoire=$id_histoire";
+$rep=$BDD->query($req);
+$ligne=$rep->fetch();
+$isHidden=$ligne["isHidden"];
 require_once("includes/connect.php");
 // Dans la requête, on remplace les valeurs issues de variables par des ?
 // On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
@@ -46,13 +46,43 @@ else
     
 <div class="container">
 
+<?php 
+if($isHidden==0)
+{
+    
+    ?>
+    <article>
+    <form class="center" method="post" >
+        <input class="btn btn-warning" type="submit" name="cacher" value="Cacher cette histoire"/>
+    </form>
+    
+    </article>
+    <?php
+    
+    
+}
+else
+{
+   
+    ?>
+    <article>
+    <form class="center" method="post" >
+        <input class="btn btn-success" type="submit" name="reveler" value="Rendre visible cette histoire"/>
+    </form>
+    </article>
+    <?php
+    
+     
+}
 
-<article>
-<h4 class = "center"> Votre histoire vient d'être supprimée </h4>
+
+?>
+
+
 
 <a href="all_histoires_admin.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Retour à la gestion des histoires</a>
 
-</article>
+
 
 </div>
 

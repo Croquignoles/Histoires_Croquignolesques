@@ -34,7 +34,7 @@ else
     <div class="well" style="background-color: #D5F5E3;" >
   <h4 class="center">Ce site va vous donner l'opportunité d'incarner un personnage et parcourir des histoires plus rocamboloesques les unes que les autres.
       <br/>
-      Veuillez à vous connecter pour pouvoir accéder aux histoires. <br/>
+      Veillez à vous connecter pour pouvoir accéder aux histoires. <br/>
       Si vous êtes un administrateur, vous pourrez aussi les créer ou les modifier vous même !  <span class ="glyphicon glyphicon-thumbs-up"> </span>
   </h4>
 </header>
@@ -48,13 +48,18 @@ else
         $id = $ligne["id_histoire"];
         $title = $ligne["nom_histoire"];
         $des_courte = $ligne["description_histoire"];
+        $isHidden=$ligne["isHidden"];
         ?>
 
 
 
 
 <article>
-            <?php if(!empty($_SESSION['user'])) {?>
+  
+            <?php 
+            if($isHidden==0)
+            {
+              if(!empty($_SESSION['user'])) {?>
                 <div class="well"     >
                 <h3><a class="link" href="histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
             <?php 
@@ -64,6 +69,10 @@ else
                 <?php } else {?>
                 <h3><?=$title ?></h3>
             <p class="movieContent"><?= $des_courte?></p>
+            <?php
+            }
+            ?>
+            
 
 </article>
 <?php } 

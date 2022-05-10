@@ -16,7 +16,6 @@ $maRequete = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart IS 
     $idpage = $ligne["id_pages"];
     $texte = $ligne["text_page"];
     $idhistoire = $ligne["id_histoire"];
-    $idpadedepart = $ligne["id_page_depart"];
 ?>
 
 <head>
@@ -25,7 +24,7 @@ $maRequete = "SELECT * FROM pages WHERE id_histoire = $id AND id_page_depart IS 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>MyMovies - <?= $titre ?> </title>
+    <title>Histoires_Croquignolesques </title>
 </head>
 
 <body>

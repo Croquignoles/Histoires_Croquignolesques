@@ -52,7 +52,7 @@ else
             </br>
 
                 <div class="text-center">
-                <a href="hide_histoire.php?id=<?=$id_histoire?>" class="btn btn-success" role="button" > Cacher cette histoire </a>
+                <a href="hide_histoire.php?id=<?=$id_histoire?>" class="btn btn-success" role="button" > Cacher cette histoire ou la rendre visible </a>
                 </div>
 </div>
 
