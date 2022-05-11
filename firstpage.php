@@ -31,11 +31,13 @@ $ligneVerifPartie=$repVerifPartie->fetch();
 $nbPartiesJoueur=$repVerifPartie->rowcount();
 if($nbPartiesJoueur!=0)
 {
-    $updateHistoire=$BDD->prepare("UPDATE partie_en_cours SET id_histoire=:histoire , nb_pdv=:pdv, resume_partie=:resume_partie");
+    $updateHistoire=$BDD->prepare("UPDATE partie_en_cours SET id_histoire=:histoire , nb_pdv=:pdv,id_page_arret=:arret, resume_partie=:resume_partie");
     $updateHistoire->execute(array(
         'histoire'=>$idhistoire,
         'pdv'=>3,
+        'arret'=>1,
         'resume_partie'=>$texte,
+        
     ));
 }
 
