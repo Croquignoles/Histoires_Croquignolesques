@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 10, 2022 at 05:31 PM
+-- Generation Time: May 11, 2022 at 07:14 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -43,10 +43,10 @@ CREATE TABLE `histoires` (
 --
 
 INSERT INTO `histoires` (`id_histoire`, `nom_histoire`, `description_histoire`, `image_histoire`, `nb_parties`, `nb_victoires`, `nb_echecs`, `isHidden`) VALUES
-(1, 'Désolé pour hier soir', 'Tu es bourré lol  cest tout', 'defonce.jpg', 8, 0, 1, 0),
-(2, 'Aventures en terre inconnue', 'Singeries et danger                                      ', 'foret.jpg', 0, 0, 0, 1),
+(1, 'Désolé pour hier soir', 'Tu es bourré lol  cest tout', 'defonce.jpg', 30, 2, 63, 0),
+(2, 'Aventures en terre inconnue', 'Singeries et danger                                      ', 'foret.jpg', 0, 0, 0, 0),
 (3, 'Gloubib', 'Blob', '', 0, 0, 0, 0),
-(4, 'atchoum', '                        sniff sniff              ', '', 0, 0, 0, 0);
+(4, 'atchoum', '                        sniff sniff              ', '', 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -128,9 +128,9 @@ INSERT INTO `pages` (`id_pages`, `text_page`, `id_histoire`, `desc_courte`, `est
 CREATE TABLE `partie_en_cours` (
   `id_partie` int(11) NOT NULL,
   `id_histoire` int(11) DEFAULT NULL,
-  `id_user` varchar(50) DEFAULT NULL,
-  `mdp_user` varchar(30) DEFAULT NULL,
-  `nb_pdv` int(11) NOT NULL DEFAULT '3'
+  `nb_pdv` int(11) NOT NULL DEFAULT '3',
+  `id_page_arret` int(11) DEFAULT NULL,
+  `matricule` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -140,6 +140,7 @@ CREATE TABLE `partie_en_cours` (
 --
 
 CREATE TABLE `users` (
+  `matricule` int(11) NOT NULL,
   `id_user` varchar(50) NOT NULL,
   `mdp_user` varchar(30) NOT NULL,
   `admin_user` tinyint(1) DEFAULT NULL
@@ -149,10 +150,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `mdp_user`, `admin_user`) VALUES
-('correcteur ', 'mdp_correcteur_1234', 0),
-('correcteur_admin', 'mdp_correcteur_1234', 1),
-('Croquignoles', 'G@llardon28%!A', 1);
+INSERT INTO `users` (`matricule`, `id_user`, `mdp_user`, `admin_user`) VALUES
+(1, 'correcteur ', 'mdp_correcteur_1234', 0),
+(2, 'correcteur_admin', 'mdp_correcteur_1234', 1),
+(3, 'Croquignoles', 'G@llardon28%!A', 1);
 
 --
 -- Indexes for dumped tables
@@ -186,13 +187,14 @@ ALTER TABLE `pages`
 ALTER TABLE `partie_en_cours`
   ADD PRIMARY KEY (`id_partie`),
   ADD KEY `histoire` (`id_histoire`),
-  ADD KEY `user_login` (`id_user`);
+  ADD KEY `marque_page` (`id_page_arret`),
+  ADD KEY `matricule` (`matricule`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`,`mdp_user`);
+  ADD PRIMARY KEY (`matricule`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -245,7 +247,8 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `partie_en_cours`
   ADD CONSTRAINT `histoire` FOREIGN KEY (`id_histoire`) REFERENCES `histoires` (`id_histoire`),
-  ADD CONSTRAINT `user_login` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `marque_page` FOREIGN KEY (`id_page_arret`) REFERENCES `pages` (`id_pages`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `matricule` FOREIGN KEY (`matricule`) REFERENCES `users` (`matricule`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
