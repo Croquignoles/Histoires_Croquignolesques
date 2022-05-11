@@ -36,6 +36,13 @@ if($nbPartiesJoueur==0)
 }
 else 
 {
+    $updateHistoire=$BDD->prepare("UPDATE partie_en_cours SET id_histoire=:histoire , nb_pdv=:pdv, id_page_arret=:arret, resume_partie=:resume_partie");
+    $updateHistoire->execute(array(
+        'histoire'=>$idhistoire,
+        'pdv'=>3,
+        'arret'=>1,
+        'resume_partie'=>$texte,
+    ));
     ?> 
     <div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="index.php" class="alert-link">retourner à l'accueil ?</a>  </div>
     <?php 

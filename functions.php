@@ -34,8 +34,15 @@ function hideHistoire($BDD,$id,$trueOrFalse)
     $req->execute(array(
         'cache'=>$trueOrFalse,
         'id'=>$id,
+    ));
+}
 
-
+function retirePdv($BDD,$matricule,$currentPdv)
+{
+    $req = $BDD->prepare("UPDATE partie_en_cours SET nb_pdv = :pdv WHERE matricule=:matricule");
+    $req->execute(array(
+        'pdv'=>$currentPdv-1,
+        'matricule'=>$matricule,
     ));
 }
 ?>
