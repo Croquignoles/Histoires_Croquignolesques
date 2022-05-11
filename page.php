@@ -62,7 +62,7 @@ if(!empty($_SESSION['user']))
 else 
     include("includes/navbar.php"); 
 ?>
-
+<div class="container">
 <div class="jumbotron">
             <div class="row">
                 <div class="col-1">
@@ -189,6 +189,7 @@ else
 
             </div>
         </div>
+</div>
 
 
 

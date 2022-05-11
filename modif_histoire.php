@@ -1,7 +1,10 @@
 <?php if(!isset($_SESSION)){
     session_start();
 }
-$id_histoire = $_GET['id'];
+if(isset($_GET['id'])){
+  $id_histoire = $_GET['id'];
+
+}
 ?>
 <!doctype html>
 <html>
@@ -41,10 +44,12 @@ else
         Ajouter un nouveau paragraphe
         </button>
       </h5>
-    </div>
+    </div>      
+
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-      <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteajoutparaph.php?id=<?=$id_histoire?>" method="post">
+
+      <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteajoutparaph.php?id_histoire=<?=$id_histoire?>" method="post">
               <input type="hidden" name="id" value="">
               <div class="form-group">
                 <label class="col-sm-4 control-label">Description courte du paragraphe</br><em>En gros une phrase d'accroche</em></label>
@@ -93,7 +98,7 @@ else
                     $id = $ligne["id_pages"];
                     $title = $ligne["desc_courte"];
                     ?>
-                  <option value="cadre"><?=$id?> - <?=$title?></option>
+                  <option value="<?=$id?>"><?=$id?> - <?=$title?></option>
                 <?php } 
                 }?>
             </select>
@@ -150,7 +155,7 @@ else
                 <div class="col-sm-6">
                 <label for="choix"></label>
                 <?php 
-                if($is_deadend==2){
+                if($is_deadend==0){
                 ?><input type="checkbox" name="is_deadend" value="yes" checked>
                 <?php } else {
                 ?> <input type="checkbox" name="is_deadend" value="yes">
@@ -163,7 +168,7 @@ else
                 <div class="col-sm-6">
                 <label for="choix"></label>
                 <?php 
-                if($is_deadend==0){
+                if($is_deadend==2){
                 ?><input type="checkbox" name="is_deadend" value="yes" checked>
                 <?php } else {
                 ?> <input type="checkbox" name="is_deadend" value="yes">
@@ -185,14 +190,14 @@ else
                 <?php
                 } else {
                 ?>
-                <option value=""><?=$id?> - <?=$title?></option>
+                <option value="<?=$id?>"><?=$id?> - <?=$title?></option>
                 <?php 
                 foreach ($tab as $key => $ligne) {
                     $id2 = $ligne["id_pages"];
                     $title2 = $ligne["desc_courte"];
                     if($id!=$id2 && $title!=$title2){
                     ?>
-                    <option value="cadre"><?=$id2?> - <?=$title2?></option>
+                    <option value="<?=$id2?>"><?=$id2?> - <?=$title2?></option>
                 <?php }
                     } 
                 }?>

@@ -1,26 +1,38 @@
 <?php
 $id_histoire = $_GET['id_histoire'];
-$id_pages = $_GET['id_page'];
+$id_page = $_GET['id_page'];
 header("Location: gerer_histoire.php?id=$id_histoire");
+
 include("includes/connect.php");
 include("modif_histoire.php");
 $title = $_POST['title'];
+$id_page_dep = $_POST['paradepart'];
 $description = $_POST['description'];
-$id_page = $_POST['paradepart'];
 if(isset($_POST['is_deadend'])){
-    $dead = 2;
-} else {
-    $dead = 1;
-}
-if(isset($_POST['is_goodend'])){
     $dead = 0;
 } else {
     $dead = 1;
 }
+if(isset($_POST['is_goodend'])){
+    $dead = 2;
+} 
 
-$requete = $BDD->prepare("UPDATE pages SET desc_courte = :desc_courte WHERE id_pages = :id");
-$requete->execute(array(
-    'desc_courte' => $title,
-    'id' => $id_pages
+
+$req = $BDD->prepare('UPDATE pages SET desc_courte = :desc_courte, text_page = :text_page, est_victoire_echec = :deadend WHERE id_pages = :id');
+$req->execute(array(
+ 'desc_courte' => $title,
+ 'text_page' => $description,
+ 'deadend' => $dead,
+ 'id' => $id_page
 ));
+
+$req2 = $BDD->prepare('UPDATE liens_pages SET id_page_depart=:pagedep, id_page_arrivee = :pagearr, id_histoire = :idhist WHERE id_page_arrivee = :id');
+$req2->execute(array(
+ 'pagedep' => $id_page_dep,
+ 'pagearr' => $id_page,
+ 'idhist' => $id_histoire,
+ 'id' => $id_page
+));
+
+
 ?>

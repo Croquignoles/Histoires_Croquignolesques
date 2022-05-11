@@ -42,7 +42,7 @@ else
 <article>
     <div class="well" style="background-color : #D5F5E3">
             <?php if(!empty($_SESSION['user'])) {?>
-                <h3><a style="color : black;" href="gerer_histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
+                <h3><a style="color : black;" href="gerer_histoire.php?id=<?=$id?>"><?=$title?></a></h3>
                 <?php echo $des_courte; }?>
             </div>
 </article>
