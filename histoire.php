@@ -30,7 +30,7 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>Histoire - <?= $titre ?> </title>
+    <title>Histoire - <?= $title ?> </title>
 </head>
 <body>
 

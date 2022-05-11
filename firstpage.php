@@ -1,5 +1,7 @@
 <?php  
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 $id = $_GET["id"];
 $titrehistoire = $_GET["story"];
 ?>
@@ -15,15 +17,30 @@ $maRequete = "SELECT * FROM pages WHERE id_pages = 1";
     $idpage = $ligne["id_pages"];
     $texte = $ligne["text_page"];
     $idhistoire = $ligne["id_histoire"]; 
+$matricule=$_SESSION['matricule'];
+$reqVerifPartie="SELECT * FROM partie_en_cours WHERE matricule=$matricule";
+$repVerifPartie=$BDD->query($reqVerifPartie);
+$ligneVerifPartie=$repVerifPartie->fetch();
+$nbPartiesJoueur=$repVerifPartie->rowcount();
+if($nbPartiesJoueur==0)
+{
+    $startHistoire="INSERT INTO partie_en_cours (id_histoire,id_page_arret,resume_partie,matricule) 
+    VALUES (:id_histoire,:id_page_arret,:resume_partie,:matricule)";
+    $repHistoire=$BDD->prepare($startHistoire);
+    $repHistoire->execute(array(
+        ':id_histoire'=>$idhistoire,
+        ':id_page_arret'=>1,
+        'resume_partie'=> $texte,
+        'matricule'=> $_SESSION['matricule'],
+    ));
+}
+else 
+{
+    ?> 
+    <div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="index.php" class="alert-link">retourner à l'accueil ?</a>  </div>
+    <?php 
+}
 
-/*$startHistoire="INSERT INTO partie_en_cours (id_histoire,id_page_arret,matricule,resume_partie) VALUES (:id_histoire,:id_page_arret,:matricule,:resume_partie)";
-$repHistoire=$BDD->prepare($startHistoire);
-$repHistoire->execute(array(
-    ':id_histoire'=>$idhistoire;
-    ':id_page_arret'=>1;
-    'matricule'=> $_SESSION['matricule'];
-    'resume_partie'=> $texte;
-))*/
 ?>
 
 <head>
