@@ -1,5 +1,6 @@
 <?php
-$id_histoire = $_GET['id'];
+$id_histoire = $_GET['id_histoire'];
+$id_pages = $_GET['id_page'];
 header("Location: gerer_histoire.php?id=$id_histoire");
 include("includes/connect.php");
 include("modif_histoire.php");
@@ -11,16 +12,15 @@ if(isset($_POST['is_deadend'])){
 } else {
     $dead = 1;
 }
+if(isset($_POST['is_goodend'])){
+    $dead = 0;
+} else {
+    $dead = 1;
+}
 
-
-$req = 'INSERT INTO pages (desc_courte, text_page, est_victoire_echec, id_histoire) 
-VALUES (:desc_courte, :text_page, :est_victoire_echec, :id_histoire)';
-$response = $BDD->prepare($req);
-$response->execute(array(
- 'desc_courte' => $title,
- 'text_page' => $description,
- 'est_victoire_echec' => $dead,
- 'id_histoire' => $id_histoire,
-
+$requete = $BDD->prepare("UPDATE pages SET desc_courte = :desc_courte WHERE id_pages = :id");
+$requete->execute(array(
+    'desc_courte' => $title,
+    'id' => $id_pages
 ));
 ?>

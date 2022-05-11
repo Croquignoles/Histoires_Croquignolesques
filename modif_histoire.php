@@ -19,10 +19,7 @@ $id_histoire = $_GET['id'];
 <body>
 <?php 
 require_once("includes/connect.php");
-$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id_histoire";
-$response = $BDD->query($maRequete1);
-$ligne = $response->fetch();
-$id = $ligne["id_histoire"];
+
 
 
 
@@ -133,7 +130,7 @@ else
                     </div>
                     <div id="collapse<?=$id?>" class="collapse" aria-labelledby="heading<?=$id?>" data-parent="#accordionExample">
                     <div class="card-body">
-                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traitemodifparaph.php?id=<?=$id_histoire?>" method="post">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traitemodifparaph.php?id_histoire=<?=$id_histoire?>&id_page=<?=$id?>" method="post">
               <input type="hidden" name="id" value="">
               <div class="form-group">
                 <label class="col-sm-4 control-label">Description courte du paragraphe</br><em>En gros une phrase d'accroche</em></label>
@@ -182,10 +179,9 @@ else
                 $response = $BDD->query($maRequete);
                 $nb = $response->rowCount();
                 $tab = $response->fetchAll();
-                if($nb==0) {
+                if($nb==1) {
                 ?>
-                <option value="">-- Choisissez un paragraphe --</option>
-                <option value="cadre">Aucun paragraphe pour l'instant. Je crée le premier !</option> 
+                <option value="cadre">Ce paragraphe est le premier !</option> 
                 <?php
                 } else {
                 ?>
@@ -194,9 +190,11 @@ else
                 foreach ($tab as $key => $ligne) {
                     $id2 = $ligne["id_pages"];
                     $title2 = $ligne["desc_courte"];
+                    if($id!=$id2 && $title!=$title2){
                     ?>
-                  <option value="cadre"><?=$id2?> - <?=$title2?></option>
-                <?php } 
+                    <option value="cadre"><?=$id2?> - <?=$title2?></option>
+                <?php }
+                    } 
                 }?>
             </select>
             </br>
