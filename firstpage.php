@@ -17,7 +17,7 @@ $maRequete = "SELECT * FROM pages WHERE id_pages = 1";
     $idpage = $ligne["id_pages"];
     $texte = $ligne["text_page"];
     $idhistoire = $ligne["id_histoire"]; 
-$matricule=$_SESSION['matricule'];
+$matricule=$_SESSION["matricule"];
 $reqVerifPartie="SELECT * FROM partie_en_cours WHERE matricule=$matricule";
 $repVerifPartie=$BDD->query($reqVerifPartie);
 $ligneVerifPartie=$repVerifPartie->fetch();

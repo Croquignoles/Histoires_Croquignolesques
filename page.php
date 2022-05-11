@@ -50,7 +50,7 @@ if(!empty($_SESSION['user']))
 else 
     include("includes/navbar.php"); 
 ?>
-
+<div class="container">
 <div class="jumbotron">
             <div class="row">
                 <div class="col-1">
@@ -98,32 +98,30 @@ else
                 else
                 {
                     
-                foreach ($response2 as $ligne2)
-                {
-                    $idpagechoix = $ligne2["id_page_arrivee"];
-                    $idLien=$ligne2["id_lien"];
-                    $maRequete3 = "SELECT * FROM pages WHERE id_pages = $idpagechoix";
-                    $response3 = $BDD->query($maRequete3);
-                    $ligne3 = $response3->fetch();
-                    
-                    $descourte = $ligne3["desc_courte"];
-                    ?>
+                    foreach ($response2 as $ligne2)
+                    {
+                        $idpagechoix = $ligne2["id_page_arrivee"];
+                        $idLien=$ligne2["id_lien"];
+                        $maRequete3 = "SELECT * FROM pages WHERE id_pages = $idpagechoix";
+                        $response3 = $BDD->query($maRequete3);
+                        $ligne3 = $response3->fetch();
+                        
+                        $descourte = $ligne3["desc_courte"];
+                        ?>
 
-                    <div class="col-sm-<?=$nbchoix?>">
-                    <p><small><?= $descourte?></small></p>
-                    <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>&idpageretour=<?=$idpage?>" class="btn btn-info" role="button"> J'y vais !</a>
-                </div>
-                <?php
-                }
+                        <div class="col-sm-<?=$nbchoix?>">
+                        <p><small><?= $descourte?></small></p>
+                        <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>&idpageretour=<?=$idpage?>" class="btn btn-info" role="button"> J'y vais !</a>
+                    </div>
+                    <?php
+                    }
+                    $reqUpdatePartie=$BDD->prepare("UPDATE partie_en_cours SET id_histoire , id_page_arret , resume_partie WHERE matricule=" );
                 
-                $reqUpdatePartie=$BDD->prepare("UPDATE partie_en_cours SET id_histoire , id_page_arret , resume_partie WHERE matricule=" )
-                
-                }
-                
-                ?>
+                }  ?>
 
             </div>
         </div>
+</div>
 
 
 
