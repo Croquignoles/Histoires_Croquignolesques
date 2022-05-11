@@ -91,7 +91,7 @@ else
                 $tab = $response->fetchAll();
                 if($nb==0) {
                 ?>
-                <option value="cadre">Aucun paragraphe pour l'instant. Je crée le premier !</option> 
+                <option value="">Aucun paragraphe pour l'instant. Je crée le premier !</option> 
                 <?php
                 } else {
                 foreach ($tab as $key => $ligne) {
