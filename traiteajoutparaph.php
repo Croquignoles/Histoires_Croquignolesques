@@ -11,7 +11,13 @@ if(isset($_POST['is_deadend'])){
 } else {
     $dead = 1;
 }
-
+$firstpara = false;
+$maRequete = "SELECT * FROM pages WHERE id_histoire = $id_histoire";
+    $response = $BDD->query($maRequete);
+    $nb = $response->rowCount();
+    if($nb==0){
+        $firstpara = true;
+    }
 
 $req = 'INSERT INTO pages (desc_courte, text_page, est_victoire_echec, id_histoire) 
 VALUES (:desc_courte, :text_page, :est_victoire_echec, :id_histoire)';
@@ -35,4 +41,15 @@ $req2->execute(array(
  'pagearr' => $id_page,
  'idhist' => $id_histoire,
 ));
+
+if($firstpara==true){
+    $req3 = $BDD->prepare('UPDATE histoire SET id_first_page=:thispage WHERE id_histoire = :id');
+    $req3->execute(array(
+    'thispage' => $id_page,
+    'id' => $id_histoire,
+));
+}
+
+
+
 ?>
