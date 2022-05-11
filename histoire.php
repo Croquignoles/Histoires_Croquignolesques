@@ -10,6 +10,22 @@ $matricule=$_SESSION['matricule'];
 
 <?php include("includes/connect.php"); 
 $id = $_GET["id"];
+$reqVerifPartie="SELECT * FROM partie_en_cours WHERE matricule=$matricule";
+$repVerifPartie=$BDD->query($reqVerifPartie);
+$ligneVerifPartie=$repVerifPartie->fetch();
+$nbPartiesJoueur=$repVerifPartie->rowcount();
+if($nbPartiesJoueur==0)
+{
+    $startHistoire="INSERT INTO partie_en_cours (id_histoire,id_page_arret,resume_partie,matricule) 
+    VALUES (:id_histoire,:id_page_arret,:resume_partie,:matricule)";
+    $repHistoire=$BDD->prepare($startHistoire);
+    $repHistoire->execute(array(
+        ':id_histoire'=>$idhistoire,
+        ':id_page_arret'=>1,
+        'resume_partie'=> $texte,
+        'matricule'=> $_SESSION['matricule'],
+    ));
+}
 $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 
     $response = $BDD->query($maRequete1);
@@ -73,7 +89,7 @@ else
                 </div> 
                 
             </div>
-            <?php if($pageArret!=$idFirstPage && $impasseOuPas==1)  
+            <?php if($pageArret!=$idFirstPage && $impasseOuPas!=2 && $pdv>0)  
                 {
                     ?><div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="page.php?story=<?=$title?>&idstory=<?=$id?>&idpage=<?=$pageArret?>" class="alert-link">la reprendre ?</a>  
                     <?php

@@ -22,19 +22,7 @@ $reqVerifPartie="SELECT * FROM partie_en_cours WHERE matricule=$matricule";
 $repVerifPartie=$BDD->query($reqVerifPartie);
 $ligneVerifPartie=$repVerifPartie->fetch();
 $nbPartiesJoueur=$repVerifPartie->rowcount();
-if($nbPartiesJoueur==0)
-{
-    $startHistoire="INSERT INTO partie_en_cours (id_histoire,id_page_arret,resume_partie,matricule) 
-    VALUES (:id_histoire,:id_page_arret,:resume_partie,:matricule)";
-    $repHistoire=$BDD->prepare($startHistoire);
-    $repHistoire->execute(array(
-        ':id_histoire'=>$idhistoire,
-        ':id_page_arret'=>1,
-        'resume_partie'=> $texte,
-        'matricule'=> $_SESSION['matricule'],
-    ));
-}
-else 
+if($nbPartiesJoueur!=0)
 {
     $updateHistoire=$BDD->prepare("UPDATE partie_en_cours SET id_histoire=:histoire , nb_pdv=:pdv, resume_partie=:resume_partie");
     $updateHistoire->execute(array(
@@ -42,8 +30,8 @@ else
         'pdv'=>3,
         'resume_partie'=>$texte,
     ));
-    
 }
+
 $infoPartie=$BDD->query("SELECT * FROM partie_en_cours WHERE matricule=$matricule");
 $lignePartie=$infoPartie->fetch();
 $pdv=$lignePartie['nb_pdv'];

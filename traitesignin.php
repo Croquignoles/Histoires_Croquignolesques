@@ -21,7 +21,10 @@ $requete->execute(array(
  'pass' => $mdp,
  'booladmin' => $boolAdmin,
 ));
-
+$reqMat=$BDD->query("SELECT * FROM users WHERE id_user=$login AND mdp_user=$mdp");
+$repMat=$reqMat->fetch();
+$matricule=$repMat['matricule'];
+$_SESSION['matricule']=$matricule;
 $_SESSION['user'] = $login;        
 header("Location:index.php");
 ?> 
