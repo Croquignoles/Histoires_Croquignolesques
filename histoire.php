@@ -3,6 +3,7 @@
     
 
 }
+$matricule=$_SESSION['matricule'];
 ?>
 <!doctype html>
 <html> 
@@ -20,8 +21,20 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     $nbParties = $ligne["nb_parties"];
     $nbVictoires=$ligne["nb_victoires"];
     $nbEchecs=$ligne["nb_echecs"];
+    $idFirstPage=$ligne["id_first_page"];
 
+$infoPartie=$BDD->query("SELECT * FROM partie_en_cours WHERE matricule=$matricule");
+    $lignePartie=$infoPartie->fetch();
+    $idPartie=$lignePartie['id_partie'];
+    $pdv=$lignePartie['nb_pdv'];
+    $pageArret=$lignePartie['id_page_arret'];
+    $resume=$lignePartie['resume_partie'];
+
+$checkImpasseDepart=$BDD->query("SELECT * from pages WHERE id_pages=$pageArret");
+    $ligneCheck=$checkImpasseDepart->fetch();
+    $impasseOuPas=$ligneCheck['est_victoire_echec'];
 ?>
+
 
 
 <head>
@@ -57,8 +70,16 @@ else
                 </div>
                 <div class="col-md-7 col-sm-5">
                 <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button" > Let's go !</a>
-                </div>
+                </div> 
+                
             </div>
+            <?php if($pageArret!=$idFirstPage && $impasseOuPas==1)  
+                {
+                    ?><div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="page.php?story=<?=$title?>&idstory=<?=$id?>&idpage=<?=$pageArret?>" class="alert-link">la reprendre ?</a>  
+                    <?php
+                }        
+                ?>     
+                </div>  
         </div>
 
     <footer class="footer">
