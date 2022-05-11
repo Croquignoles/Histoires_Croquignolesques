@@ -47,6 +47,11 @@ else
     <div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="index.php" class="alert-link">retourner à l'accueil ?</a>  </div>
     <?php 
 }
+$infoPartie=$BDD->query("SELECT * FROM partie_en_cours WHERE matricule=$matricule");
+$lignePartie=$infoPartie->fetch();
+$pdv=$lignePartie['nb_pdv'];
+$pageArret=$lignePartie['id_page_arret'];
+
 
 ?>
 

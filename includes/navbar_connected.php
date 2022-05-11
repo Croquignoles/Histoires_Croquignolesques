@@ -24,6 +24,14 @@
                             </ul>
                         <?php } ?>
                                 <ul class="nav navbar-nav navbar-right">
+                                    
+                                        <?php
+                                        if(isset($pdv)) 
+                                        {
+                                            
+                                            ?><li class="navbar-brand" >PDV : <?=$pdv?></li><?php
+                                        }
+                                        ?>
                                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-user"></span> Bienvenue, <?= $_SESSION['user']?> <b class="caret"></b>
