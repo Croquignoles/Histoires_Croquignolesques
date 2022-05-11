@@ -16,7 +16,14 @@ $maRequete = "SELECT * FROM pages WHERE id_pages = 1";
     $texte = $ligne["text_page"];
     $idhistoire = $ligne["id_histoire"]; 
 
-  
+/*$startHistoire="INSERT INTO partie_en_cours (id_histoire,id_page_arret,matricule,resume_partie) VALUES (:id_histoire,:id_page_arret,:matricule,:resume_partie)";
+$repHistoire=$BDD->prepare($startHistoire);
+$repHistoire->execute(array(
+    ':id_histoire'=>$idhistoire;
+    ':id_page_arret'=>1;
+    'matricule'=> $_SESSION['matricule'];
+    'resume_partie'=> $texte;
+))*/
 ?>
 
 <head>

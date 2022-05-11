@@ -12,12 +12,14 @@ $response->execute(array($login, $mdp));
 $ligne = $response->fetch();
 $nb = $response->rowCount(); 
 $isAdmin = $ligne['admin_user'];
+$matricule=$ligne['matricule'];
 
 if ($nb ==0){                
     echo "Utilisateur non reconnu ! "; 
 }else if ($nb==1){        
      echo "Bonjour " . $login . "!";        
-        $_SESSION['user'] = $login;        
+        $_SESSION['user'] = $login;
+        $_SESSION['matricule'] =$matricule;       
         header("Location: index.php");
         if($isAdmin==0){
             $_SESSION['isAdmin'] = 0;

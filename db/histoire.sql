@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 11, 2022 at 07:14 AM
+-- Generation Time: May 11, 2022 at 08:30 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -130,6 +130,7 @@ CREATE TABLE `partie_en_cours` (
   `id_histoire` int(11) DEFAULT NULL,
   `nb_pdv` int(11) NOT NULL DEFAULT '3',
   `id_page_arret` int(11) DEFAULT NULL,
+  `resume_partie` text,
   `matricule` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -188,7 +189,7 @@ ALTER TABLE `partie_en_cours`
   ADD PRIMARY KEY (`id_partie`),
   ADD KEY `histoire` (`id_histoire`),
   ADD KEY `marque_page` (`id_page_arret`),
-  ADD KEY `matricule` (`matricule`);
+  ADD KEY `id_user` (`matricule`);
 
 --
 -- Indexes for table `users`
@@ -225,6 +226,12 @@ ALTER TABLE `partie_en_cours`
   MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `matricule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -247,8 +254,8 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `partie_en_cours`
   ADD CONSTRAINT `histoire` FOREIGN KEY (`id_histoire`) REFERENCES `histoires` (`id_histoire`),
-  ADD CONSTRAINT `marque_page` FOREIGN KEY (`id_page_arret`) REFERENCES `pages` (`id_pages`) ON DELETE SET NULL ON UPDATE SET NULL,
-  ADD CONSTRAINT `matricule` FOREIGN KEY (`matricule`) REFERENCES `users` (`matricule`);
+  ADD CONSTRAINT `id_user` FOREIGN KEY (`matricule`) REFERENCES `users` (`matricule`),
+  ADD CONSTRAINT `marque_page` FOREIGN KEY (`id_page_arret`) REFERENCES `pages` (`id_pages`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
