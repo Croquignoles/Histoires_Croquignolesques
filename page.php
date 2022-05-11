@@ -1,9 +1,12 @@
-<?php  
-session_start();
+<?php 
+if(!isset($_SESSION)){
+    session_start();
+} 
 $idpage = $_GET["idpage"];
 $titrehistoire = $_GET["story"];
 $idhistoire = $_GET["idstory"];
 $idPageRetour=$_GET['idpageretour'];
+$matricule=$_SESSION['matricule'];
 ?>
 
 <!doctype html>
@@ -111,7 +114,9 @@ else
                     <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>&idpageretour=<?=$idpage?>" class="btn btn-info" role="button"> J'y vais !</a>
                 </div>
                 <?php
-                } 
+                }
+                
+                $reqUpdatePartie=$BDD->prepare("UPDATE partie_en_cours SET id_histoire , id_page_arret , resume_partie WHERE matricule=" )
                 
                 }
                 

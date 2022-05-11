@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 11, 2022 at 08:30 AM
+-- Generation Time: May 11, 2022 at 09:51 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -43,9 +43,9 @@ CREATE TABLE `histoires` (
 --
 
 INSERT INTO `histoires` (`id_histoire`, `nom_histoire`, `description_histoire`, `image_histoire`, `nb_parties`, `nb_victoires`, `nb_echecs`, `isHidden`) VALUES
-(1, 'Désolé pour hier soir', 'Tu es bourré lol  cest tout', 'defonce.jpg', 30, 2, 63, 0),
-(2, 'Aventures en terre inconnue', 'Singeries et danger                                      ', 'foret.jpg', 0, 0, 0, 0),
-(3, 'Gloubib', 'Blob', '', 0, 0, 0, 0),
+(1, 'Désolé pour hier soir', 'Tu es bourré lol  cest tout', 'defonce.jpg', 40, 2, 66, 0),
+(2, 'Aventures en terre inconnue', 'Singeries et danger                                      ', 'foret.jpg', 2, 0, 0, 0),
+(3, 'Gloubib', 'Blob', '', 0, 0, 0, 1),
 (4, 'atchoum', '                        sniff sniff              ', '', 0, 0, 0, 1);
 
 -- --------------------------------------------------------
@@ -134,6 +134,13 @@ CREATE TABLE `partie_en_cours` (
   `matricule` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `partie_en_cours`
+--
+
+INSERT INTO `partie_en_cours` (`id_partie`, `id_histoire`, `nb_pdv`, `id_page_arret`, `resume_partie`, `matricule`) VALUES
+(1, 1, 3, 1, 'Peu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\n', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -154,7 +161,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`matricule`, `id_user`, `mdp_user`, `admin_user`) VALUES
 (1, 'correcteur ', 'mdp_correcteur_1234', 0),
 (2, 'correcteur_admin', 'mdp_correcteur_1234', 1),
-(3, 'Croquignoles', 'G@llardon28%!A', 1);
+(3, 'Croquignoles', 'G@llardon28%!A', 1),
+(4, 'Chasseur', 'Ceuilleur', 1);
 
 --
 -- Indexes for dumped tables
@@ -223,13 +231,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `partie_en_cours`
 --
 ALTER TABLE `partie_en_cours`
-  MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `matricule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `matricule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
