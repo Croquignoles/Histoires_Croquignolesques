@@ -42,10 +42,13 @@ $req2->execute(array(
  'idhist' => $id_histoire,
 ));
 
+$maRequete2 = "SELECT * FROM pages WHERE id_histoire = $id_histoire";
+$response2 = $BDD->query($maRequete2);
+$id = $response->lastInsertId();
 if($firstpara==true){
     $req3 = $BDD->prepare('UPDATE histoire SET id_first_page=:thispage WHERE id_histoire = :id');
     $req3->execute(array(
-    'thispage' => $id_page,
+    'thispage' => $id,
     'id' => $id_histoire,
 ));
 }

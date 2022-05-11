@@ -3,7 +3,8 @@
     
 
 }
-$matricule=$_SESSION['matricule'];
+if(isset($_SESSION['matricule'])){
+$matricule=$_SESSION['matricule'];}
 ?>
 <!doctype html>
 <html> 
