@@ -49,6 +49,7 @@ $infoPartie=$BDD->query("SELECT * FROM partie_en_cours WHERE matricule=$matricul
 $checkImpasseDepart=$BDD->query("SELECT * from pages WHERE id_pages=$pageArret");
     $ligneCheck=$checkImpasseDepart->fetch();
     $impasseOuPas=$ligneCheck['est_victoire_echec'];
+    $departOuPas=$ligneCheck['is_first_page'];
 ?>
 
 
@@ -89,7 +90,7 @@ else
                 </div> 
                 
             </div>
-            <?php if($pageArret!=$idFirstPage && $impasseOuPas!=2 && $pdv>0)  
+            <?php if(!$departOuPas && $impasseOuPas!=2 && $pdv>0)  
                 {
                     ?><div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="page.php?story=<?=$title?>&idstory=<?=$id?>&idpage=<?=$pageArret?>" class="alert-link">la reprendre ?</a>  
                     <?php
