@@ -12,14 +12,27 @@ if(isset($_POST['is_deadend'])){
     $dead = 1;
 }
 
-$req = 'INSERT INTO pages (desc_courte, text_page, est_victoire_echec, id_histoire) 
-VALUES (:desc_courte, :text_page, :est_victoire_echec, :id_histoire)';
+$requete = "SELECT * FROM pages WHERE id_histoire=:idhist";
+$response = $BDD->prepare($requete);
+$response->execute(array("idhist"=>$id_histoire));
+$nb = $response->rowCount();
+if($nb==0){
+    $isfirst = 1;
+} else {
+    $isfirst = 0;
+}
+
+
+$req = 'INSERT INTO pages (desc_courte, text_page, est_victoire_echec, id_histoire, is_first_page) 
+VALUES (:desc_courte, :text_page, :est_victoire_echec, :id_histoire, :is_first)';
 $response = $BDD->prepare($req);
 $response->execute(array(
  'desc_courte' => $title,
  'text_page' => $description,
  'est_victoire_echec' => $dead,
  'id_histoire' => $id_histoire,
+ 'is_first' => $isfirst,
+
 ));
     $requete = "SELECT * FROM pages WHERE desc_courte=:desc_courte";
     $response = $BDD->prepare($requete);
