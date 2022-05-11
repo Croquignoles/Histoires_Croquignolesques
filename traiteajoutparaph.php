@@ -11,13 +11,6 @@ if(isset($_POST['is_deadend'])){
 } else {
     $dead = 1;
 }
-$firstpara = false;
-$maRequete = "SELECT * FROM pages WHERE id_histoire = $id_histoire";
-    $response = $BDD->query($maRequete);
-    $nb = $response->rowCount();
-    if($nb==0){
-        $firstpara = true;
-    }
 
 $req = 'INSERT INTO pages (desc_courte, text_page, est_victoire_echec, id_histoire) 
 VALUES (:desc_courte, :text_page, :est_victoire_echec, :id_histoire)';

@@ -10,7 +10,14 @@ $titrehistoire = $_GET["story"];
  
 <?php include("includes/connect.php"); 
 
-$maRequete = "SELECT * FROM pages WHERE id_pages = 1";
+
+$maRequeteFirst = "SELECT * FROM pages WHERE id_histoire = $id && is_first_page=1";
+ 
+    $responseFirst = $BDD->query($maRequeteFirst);
+    $ligneF = $responseFirst->fetch();
+    $id_first = $ligneF['id_pages'];
+
+$maRequete = "SELECT * FROM pages WHERE id_pages = $id_first";
  
     $response = $BDD->query($maRequete);
     $ligne = $response->fetch();
