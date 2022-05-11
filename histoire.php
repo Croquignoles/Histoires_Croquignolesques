@@ -37,7 +37,7 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
     $nbParties = $ligne["nb_parties"];
     $nbVictoires=$ligne["nb_victoires"];
     $nbEchecs=$ligne["nb_echecs"];
-    $idFirstPage=$ligne["id_first_page"];
+    
 
 $infoPartie=$BDD->query("SELECT * FROM partie_en_cours WHERE matricule=$matricule");
     $lignePartie=$infoPartie->fetch();
