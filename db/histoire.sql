@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 11, 2022 at 09:51 AM
+-- Generation Time: May 11, 2022 at 01:38 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -32,6 +32,7 @@ CREATE TABLE `histoires` (
   `nom_histoire` varchar(100) DEFAULT NULL,
   `description_histoire` text,
   `image_histoire` varchar(100) DEFAULT NULL,
+  `id_first_page` int(11) DEFAULT '1',
   `nb_parties` int(11) DEFAULT '0',
   `nb_victoires` int(11) NOT NULL DEFAULT '0',
   `nb_echecs` int(11) NOT NULL DEFAULT '0',
@@ -42,11 +43,11 @@ CREATE TABLE `histoires` (
 -- Dumping data for table `histoires`
 --
 
-INSERT INTO `histoires` (`id_histoire`, `nom_histoire`, `description_histoire`, `image_histoire`, `nb_parties`, `nb_victoires`, `nb_echecs`, `isHidden`) VALUES
-(1, 'Désolé pour hier soir', 'Tu es bourré lol  cest tout', 'defonce.jpg', 40, 2, 66, 0),
-(2, 'Aventures en terre inconnue', 'Singeries et danger                                      ', 'foret.jpg', 2, 0, 0, 0),
-(3, 'Gloubib', 'Blob', '', 0, 0, 0, 1),
-(4, 'atchoum', '                        sniff sniff              ', '', 0, 0, 0, 1);
+INSERT INTO `histoires` (`id_histoire`, `nom_histoire`, `description_histoire`, `image_histoire`, `id_first_page`, `nb_parties`, `nb_victoires`, `nb_echecs`, `isHidden`) VALUES
+(1, 'Désolé pour hier soir', 'Tu es bourré lol  cest tout', 'defonce.jpg', 1, 118, 4, 102, 0),
+(2, 'Aventures en terre inconnue', 'Singeries et danger                                      ', 'foret.jpg', 1, 4, 0, 0, 0),
+(3, 'Gloubib', 'Blob', '', 15, 4, 0, 0, 0),
+(4, 'atchoum', '                        sniff sniff              ', '', 1, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,8 @@ INSERT INTO `liens_pages` (`id_lien`, `id_page_depart`, `id_page_arrivee`, `id_h
 (17, 5, 14, 1),
 (18, 13, 6, 1),
 (19, 13, 9, 1),
-(20, 13, 8, 1);
+(20, 13, 8, 1),
+(21, 15, 16, 3);
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,9 @@ INSERT INTO `pages` (`id_pages`, `text_page`, `id_histoire`, `desc_courte`, `est
 (11, 'J’ouvre la fenêtre et commence a m’y insérer dedans. Je dois forcer un peu pour passer mon buste, ce dernier frotte d’un coup sur les côtés de la fenêtre et je sens que passer par là était peut être une erreur. Je suis coincé. Coincé coincé coincé, pas moyen de me libérer, je pousse de toutes mes forces mais c’est impossible, d’autant plus que mes bras dans cette position ne sont pas libres de tout mouvement. Je commence a fatiguer et à avoir mal au dessous des côtes. Ma vision se trouble, peut-être n’était-ce pas le meilleur choix… \r\n', 1, 'Par la fenêtre de la salle de bain', 0),
 (12, 'Je décide d’appeler ma sœur : « Allô ? \r\n-Oui c’est ton frère, j’suis dans une galère sans nom, je t’expliquerai à la maison, t’as une idée de ce que j’ai pu faire hier soir ? Demandais-je \r\n-Je crois que tu es parti en soirée avec Théotime et d’après ce que tu m’avais dit, t’allais te mettre une grosse caisse. \r\n-Oui nan mais tu me connais, je respecte toujours mes limites, puis je suis relativement lucide même alcoolisé !\r\n-Si tu le dis, enfin rentre vite, on a les partiels à réviser, le projet de comme web, l’ontologie, le projet sur R, le projet MASK et transD ! Dit-elle.\r\n-Mais je sais même pas où je suis !!! Rétorquais-je.\r\n-Ah mais attends je peux regarder sur l’appli de géolocalisation. Euh quoi ? Tu fous dans la maison hantée par le fantôme de Ludivine ? \r\n-Hein ? Mais qu’est-ce que je –\r\n-Allô ? ALLÔ ? »\r\nUne lettre vint se glisser sous le bas de la porte. Je décide de l’ouvrir :\r\n\r\n                           Avis de décès\r\n     \r\n	         Madame Ludivine ATOIRE \r\n	   Décédée le Lundi 11 février 1986 \r\n		A l’âge de 57 ans \r\n\r\nJe commence à manquer d’air, mon rythme cardiaque s’emporte à nouveau et ma vue retrouve peu à peu le calme sombre dans lequel cette histoire à commencé. Je chois. \r\n', 1, 'Je compose le numéro de ma soeur', 0),
 (13, 'Lorsque la mère de François entend « Skype », je vois dans ses yeux une lumière s’allumer. J’apprends alors qu’elle a des problèmes de connexion et que c’est ce qui l’empêche de voir son fils. Sur le trajet jusqu’à sa maison, je finis par lui demander si elle sait comment je suis arrivé là. Ludivine, puisque c’est comme ça qu’elle s’appelle après s’être présentée à moi à la troisième personne, entama une tirade digne des pires dramaturges, sans rebondissements ni péripéties, plus fade encore que des pâtes sans sel, plus insipide qu’un bain sans mousse. A force de « mhmh » et de « je vois » répétés à ce qui se rapproche de l’infini, je sors du trampoline puis j’avance avec Ludi pour me rapprocher de sa salle de bain pour m’y enfermer. Un miroir immense se dresse devant moi, je focalise d’abord mon regard sur : \r\n', 1, 'Je lui demande si elle a Skype pour voir son fils en appel', 1),
-(14, 'A mesure que je termine mon histoire le visage de la haine se dessine peu à peu devant moi. Cette femme, elle semble… flotter ? Décidemment il faut que je me calme sur les soirées. Elle s’approche de moi, les frissons parcourent mon corps. Il fait froid. Elle traverse le filet du trampoline et se place devant moi. Elle murmure « Vous n’auriez pas dû venir ici, François est vivant ! ». Mon souffle ralenti, tout devient sombre, le calme se présente alors à moi. Peut-être n’était-ce pas le meilleur choix…\r\n', 1, 'Je lui parle de la guerre au Mali et de mon oncle mort en mission', 0);
+(14, 'A mesure que je termine mon histoire le visage de la haine se dessine peu à peu devant moi. Cette femme, elle semble… flotter ? Décidemment il faut que je me calme sur les soirées. Elle s’approche de moi, les frissons parcourent mon corps. Il fait froid. Elle traverse le filet du trampoline et se place devant moi. Elle murmure « Vous n’auriez pas dû venir ici, François est vivant ! ». Mon souffle ralenti, tout devient sombre, le calme se présente alors à moi. Peut-être n’était-ce pas le meilleur choix…\r\n', 1, 'Je lui parle de la guerre au Mali et de mon oncle mort en mission', 0),
+(15, '  Elles sont vraiment succulentes en même temps', 3, 'J\'adore les macaronis', 1),
+(16, ' En fait j\'adore vraiment les coquilettes', 3, 'Et les coquilettes', 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +143,8 @@ CREATE TABLE `partie_en_cours` (
 --
 
 INSERT INTO `partie_en_cours` (`id_partie`, `id_histoire`, `nb_pdv`, `id_page_arret`, `resume_partie`, `matricule`) VALUES
-(1, 1, 3, 1, 'Peu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\n', 4);
+(1, 1, 3, 3, 'Peu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\nPeu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\nPeu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\n Grâce à ma force surhumaine et à ce trou que j’ai pu faire dans le filet du trampoline, je cours aussi vite que mes jambes me le permettent, mais c’est sans compter les séquelles de la soirée d’hier. Ma tête tourne encore, et pas qu’un peu ! Le sentier n’est pas des plus lisse et tel Malthaël (mais en bien moins classe), me voilà déchu, à même le sol. Je ne peux plus avancer, cependant, ce n’est pas le cas du chien. J’entends ses aboiements qui se font de plus en plus fort, jusqu’à ce qu’une vive douleur se fait ressentir sur ma jambe gauche. Le canidé m’a mordu !!! Peut-être que ce n’était pas la meilleure des idées de courir alors qu’un chien m’aboyait dessus…\r\n\r\n', 4),
+(3, 1, 0, 3, 'Peu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\nPeu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\nPeu à peu, le sombre univers qui jusqu\'alors m\'enveloppait laissait place au une faible puis aveuglante lumière. Je suis sur une surface molle, je flotte ? Ma tête me lance. J\'ai mal, et terriblement soif, je pourrais boire quoi, 2 ou 3 verres d\'eau ! J\'entends un chien aboyer et bien que mon être semble plus lourd que mes cours de philo au lycée, je parviens à me relever et distingue peu à peu les contours d\'un trampoline. Le chien continuant d\'aboyer :\r\n Grâce à ma force surhumaine et à ce trou que j’ai pu faire dans le filet du trampoline, je cours aussi vite que mes jambes me le permettent, mais c’est sans compter les séquelles de la soirée d’hier. Ma tête tourne encore, et pas qu’un peu ! Le sentier n’est pas des plus lisse et tel Malthaël (mais en bien moins classe), me voilà déchu, à même le sol. Je ne peux plus avancer, cependant, ce n’est pas le cas du chien. J’entends ses aboiements qui se font de plus en plus fort, jusqu’à ce qu’une vive douleur se fait ressentir sur ma jambe gauche. Le canidé m’a mordu !!! Peut-être que ce n’était pas la meilleure des idées de courir alors qu’un chien m’aboyait dessus…\r\n\r\n', 3);
 
 -- --------------------------------------------------------
 
@@ -172,7 +177,8 @@ INSERT INTO `users` (`matricule`, `id_user`, `mdp_user`, `admin_user`) VALUES
 -- Indexes for table `histoires`
 --
 ALTER TABLE `histoires`
-  ADD PRIMARY KEY (`id_histoire`);
+  ADD PRIMARY KEY (`id_histoire`),
+  ADD KEY `premier_parag` (`id_first_page`);
 
 --
 -- Indexes for table `liens_pages`
@@ -219,19 +225,19 @@ ALTER TABLE `histoires`
 -- AUTO_INCREMENT for table `liens_pages`
 --
 ALTER TABLE `liens_pages`
-  MODIFY `id_lien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_lien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id_pages` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pages` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `partie_en_cours`
 --
 ALTER TABLE `partie_en_cours`
-  MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_partie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -242,6 +248,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `histoires`
+--
+ALTER TABLE `histoires`
+  ADD CONSTRAINT `premier_parag` FOREIGN KEY (`id_first_page`) REFERENCES `pages` (`id_pages`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `liens_pages`

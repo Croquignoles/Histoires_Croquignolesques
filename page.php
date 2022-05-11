@@ -43,7 +43,6 @@ $pdv=$lignePartie['nb_pdv'];
 $pageArret=$lignePartie['id_page_arret'];
 $resume=$lignePartie['resume_partie'];
 
-
 ?>
 <head>
     <meta charset="utf-8">
@@ -86,6 +85,21 @@ else
                             <hr>
                             <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a></p> 
                         </div>
+                        <div id="accordion">
+                        <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Voir votre résumé
+                        </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php echo $resume.$textechoix1; ?>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                         <?php     
                         addEchecFunction($BDD,$idhistoire,$echecs);
                     }  
@@ -116,6 +130,21 @@ else
                             <hr>
                             <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a></p> 
                         </div>
+                        <div id="accordion">
+                         <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Voir votre résumé
+                        </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php echo $resume.$textechoix1; ?>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                         <?php   
                         addEchecFunction($BDD,$idhistoire,$echecs);  
                     }  
@@ -139,12 +168,32 @@ else
                 }
                 elseif($impasseOuVictoire==2)
                 {
+                    $reqUpdatePartie=$BDD->prepare("UPDATE partie_en_cours SET id_page_arret=:page_arret , resume_partie=:resume_partie");
+                        $reqUpdatePartie->execute(array(
+                            'page_arret'=>$idpage,
+                            'resume_partie'=>$resume." ".$textechoix1,
+                        ));
                     ?><div> <h3 class="text-center">Oh mais, ne serait-ce pas la victoire que j'apperçois là ? J'ai toujours su que j'étais destiné à de grandes choses !</h3></div>
                     <article class="container">
                     <div class="text-center">
                         <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a>
                     </div>
                 </article>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Voir votre résumé
+                        </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php echo $resume.$textechoix1; ?>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                     <?php
                         addVictoireFunction($BDD,$idhistoire,$victoires);
                 }
@@ -168,9 +217,8 @@ else
                 <?php
                 
                 }
-                if(stripos($resume,$textechoix1)==false)
+                if(!str_contains($resume,$textechoix1))
                 {
-                    
                     $reqUpdatePartie=$BDD->prepare("UPDATE partie_en_cours SET id_histoire=:id_histoire , id_page_arret=:id_page_arret , resume_partie=:resume_partie WHERE matricule=:matricule" );
                     $reqUpdatePartie->execute(array(
                         'matricule'=>$matricule,
@@ -178,15 +226,9 @@ else
                         'id_page_arret'=>$idpage,
                         'resume_partie'=>$resume.$textechoix1,
                     )); 
-                }
-                
-                
-                }
-
-                
-                
+                }                
+                }                               
                 ?>
-
             </div>
         </div>
 </div>
