@@ -84,7 +84,7 @@ else
                         <div class="alert alert-danger" role="alert">
                             <h3 class="alert-heading">Vous êtes mort !</h3>
                             <hr>
-                            <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.</p> 
+                            <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a></p> 
                         </div>
                         <?php     
                         addEchecFunction($BDD,$idhistoire,$echecs);
@@ -114,7 +114,7 @@ else
                         <div class="alert alert-danger" role="alert">
                             <h3 class="alert-heading">Vous êtes mort !</h3>
                             <hr>
-                            <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.</p> 
+                            <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a></p> 
                         </div>
                         <?php   
                         addEchecFunction($BDD,$idhistoire,$echecs);  
