@@ -207,15 +207,16 @@ else
               <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-4 mt-2">
                   <button type="submit" class="btn btn-default btn-success"><span class="glyphicon glyphicon-refresh"></span> Modifier ce paragraphe </button>
+              </br>  
+              </br>            
                 </div>
-              </div>
             </form> 
                     </div>
                     </div>
                 </div>
                 
             <?php } ?>
- 
+
 </div>
 </div>
 

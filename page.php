@@ -82,12 +82,13 @@ else
                             'resume_partie'=>$resume." ".$textechoix1,
                         ));
                         ?>
-                        <h3 class="alert-heading ">Vous êtes mort !</h3>
-                            <hr>
-                            <p class="text-center">Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  
+                        <div class="well">
+                        <p class="center">Vous êtes mort</p>
+
+                            <p class="center">Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  
                             </p> 
                             <p class="text-center">
-                            <a href="index.php" class="btn btn-danger role="button" > Retour au choix des histoires </a>
+                            <a href="index.php" class="btn btn-danger" role="button" > Retour au choix des histoires </a>
                             </p>
                         </div>
                         <div id="accordion">
@@ -130,13 +131,12 @@ else
                             'resume_partie'=>$resume." ".$textechoix1,
                         ));
                         ?>
-                        <div class="alert alert-danger" role="alert">
-                        <h3 class="alert-heading ">Vous êtes mort !</h3>
-<hr>
-                            <p class="text-center">Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  
+                        <div  class="well">
+                        <p class="center">Vous êtes mort</p>                            
+                        <p class="text-center">Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  
                             </p> 
                             <p class="text-center">
-                            <a href="index.php" class="btn btn-danger role="button" > Retour au choix des histoires </a>
+                            <a href="index.php" class="btn btn-danger" role="button" > Retour au choix des histoires </a>
                     </p>
                         </div>
                         <div id="accordion">
