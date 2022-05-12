@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>Croquignolerie - <?= $titre ?> </title>
+    <title>Croquignolerie</title>
 </head>
 
 <body>
@@ -21,11 +21,16 @@ if(!empty($_SESSION['user']))
 else 
     include("includes/navbar.php"); 
 ?>
-
+<div class="container">
 <div class="text-center">
-  <img src="images/lesdeuxzozos.png" class="rounded" alt="...">
+  <img src="images/lesdeuxzozos.png" class="rounded" alt="Photo de Lorinda et Hugo">
 </br>
 <h3>En fait non vous pouvez pas nous contacter aha prank </h3>
+</br>
+
+</br>
+
+</div>
 </div>
 
 <?= include("includes/footer.php"); ?>
