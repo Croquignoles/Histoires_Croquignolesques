@@ -64,9 +64,11 @@ else
 <div class="container">
 <div class="jumbotron">
             <div class="row">
-                <div class="col-1">
+                <div class="col">
                     <p><?= $textechoix1?></p>
                 </div>
+                </br>
+
                 <?php
                 if($impasseOuVictoire==0)
                 {
@@ -210,9 +212,11 @@ else
                     $ligne3 = $response3->fetch();                    
                     $descourte = $ligne3["desc_courte"];
                     ?>
-                    <div class="col-sm-<?=$nbchoix?>">
-                    <p><small><?= $descourte?></small></p>
-                    <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>&idpageretour=<?=$idpage?>" class="btn btn-info" role="button"> J'y vais !</a>
+                    <div class="col-sm-2> text-center">
+                    <p><small><?= $descourte?> : </small>
+                    <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>&idpageretour=<?=$idpage?>" class="btn" role="button">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span> J'y vais !</a>
+                    </p>
                 </div>
                 <?php
                 

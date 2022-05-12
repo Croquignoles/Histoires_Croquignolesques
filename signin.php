@@ -20,7 +20,7 @@
 
         <h2 class="text-center">Inscription</h2>
 
-        
+    <div class="container">
         <div class="well">
             <form class="form-signin form-horizontal" role="form" action="traitesignin.php" method="post">
                 <div class="form-group">
@@ -31,6 +31,11 @@
                 <div class="form-group">
                     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <input type="password" name="password" class="form-control" placeholder="Choisissez votre mot de passe" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                        <input type="password" name="password_check" class="form-control" placeholder="Confirmez votre mot de passe" required>
                     </div>
                 </div>
                 <div class="form-check">
@@ -57,6 +62,7 @@
                 </div>
             </form>
         </div>
+</div>
 
         <footer class="footer">
     Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.
