@@ -3,7 +3,6 @@ session_start();
 ?>
 <!doctype html>
   <html>
-
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +12,12 @@ session_start();
     <title>Histoires croquignolesques - ajout d'une histoire</title>
 </head>
 
-    <body>
-      <?php if(!empty($_SESSION['user']))
+<body>
+<?php if(!empty($_SESSION['user']))
     include("includes/navbar_connected.php"); 
 else 
     include("includes/navbar.php");
 ?> 
-
 <div class="container">
           <h2 class="text-center">Ajout d'une histoire</h2>
           <h4 class="text-center">Cette page vous permet d'ajouter une histoire à la liste dont vous diposez actuellement.
@@ -61,10 +59,9 @@ else
 </div>
 
 </div>
-
-      <!-- jQuery -->
+<!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
 <!-- JavaScript Boostrap plugin -->
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>    </body>
-
-  </html>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>    
+</body>
+</html>

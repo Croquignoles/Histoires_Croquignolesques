@@ -3,12 +3,11 @@
 }
 $id_histoire = $_GET['id'];
 ?>
+
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <!-- Les deux lignes en dessous c'est quoi ça??-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,9 +28,6 @@ $nbVictoires=$ligne["nb_victoires"];
 $nbEchecs=$ligne["nb_echecs"];
 
 
-
-// Dans la requête, on remplace les valeurs issues de variables par des ?
-// On exécute la requête en lui fournissant les variables à utiliser dans l’ordre
 if(!empty($_SESSION['user']))
     require_once("includes/navbar_connected.php"); 
 else 
@@ -54,10 +50,9 @@ else
     ?></p>
 
 
+    </div>
+<?=include("includes/footer.php");?>
 </div>
-    <footer class="footer">
-    Construit avec swag par lololezigoto, élève à l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer>    </div>
 
     <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>

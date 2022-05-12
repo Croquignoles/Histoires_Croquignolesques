@@ -91,17 +91,42 @@ else
         <li data-slide-to="1" data-target="#carousel-example-generic" class=""></li>
         <li data-slide-to="2" data-target="#carousel-example-generic" class=""></li>
       </ol>
-      <div class="carousel-inner">
+      <div class="carousel-inner" style=" width:100%; height: 500px !important;">
         <div class="item active">
-          <img alt="First slide" data-src="holder.js/900x500/auto/#777:#555/text:First slide" src="images/defonce.jpg">
+          <img alt="First slide"  src="images/defonce.jpg">
+            <div class="carousel-caption d-none d-md-block" >
+              <h5>test titre</h5>
+              <a href="histoire.php?story=Désolé pour hier soir&id=1" class="btn btn-default" role="button" > Je joue !</a>
+              </br>
+            </div>
         </div>
+      <?php $maRequete = "SELECT * FROM histoires";
+      $response = $BDD->query($maRequete);
+      $tab = $response->fetchAll();
+      foreach ($tab as $key => $ligne) {
+        $id = $ligne["id_histoire"];
+        $title = $ligne["nom_histoire"];
+        $des_courte = $ligne["description_histoire"];
+        $isHidden=$ligne["isHidden"];
+        $image = $ligne["image_histoire"];?>
+
         <div class="item">
-          <img alt="Second slide" data-src="holder.js/900x500/auto/#666:#444/text:Second slide" src="images/defonce.jpg">
+          <img alt="Second slide"  src="images/<?=$image?>" style=" width:100%; height: 500px !important;">
+          <div class="carousel-caption d-none d-md-block" >
+              <h5><?=$title?></h5>
+              <a href="histoire.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-default" role="button" > Je joue !</a>
+              </br>
+            </div>
         </div>
+      <?php
+      }
+      ?>
+
         <div class="item">
-          <img alt="Third slide" data-src="holder.js/900x500/auto/#555:#333/text:Third slide" src="images/defonce.jpg">
+          <img alt="Third slide"  src="images/defonce.jpg">
         </div>
       </div>
+      <!--Boutons directionnels du carousel-->
       <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
@@ -110,13 +135,15 @@ else
       </a>
     </div>
 </div>
+</br>
+</br>
 </body>
 </html>
 
                   
-        <footer class="footer">
-    Construit avec swag par lololezigoto, élève à l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer>    </div>
+<?= include("includes/footer.php"); ?>
+
+</div>
 
     <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
