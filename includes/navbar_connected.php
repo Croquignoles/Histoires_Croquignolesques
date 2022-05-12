@@ -16,22 +16,27 @@
                         if($_SESSION['isAdmin']==1){?>
 
                         
-                                        <ul class="nav navbar-nav">
+                            <ul class="nav navbar-nav">
                                 <li><a href="histoire_add.php">Créer une nouvelle histoire</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
-                                <li><a href="all_histoires_admin.php">Gérer les histoires existantes</a></li>
-                            </ul>
+                                <li><a href="all_histoires_admin.php">Gérer les histoires existantes</a></li>  
+                            </ul> 
+                            
                         <?php } ?>
                                 <ul class="nav navbar-nav navbar-right">
-                                    
-                                        <?php
+                                   <ul class="nav navbar-nav">                                    
+                            <?php
                                         if(isset($pdv)) 
                                         {
                                             
-                                            ?><li class="navbar-brand" >PDV : <?=$pdv?></li><?php
-                                        }
+                                            ?><li class="navbar-brand"></span> Vos pdv : <?=$pdv?> <span class="glyphicon glyphicon-heart"> </li>
+                                        <?php
+                                        } 	
+
                                         ?>
+                            </ul> 
+
                                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-user"></span> Bienvenue, <?= $_SESSION['user']?> <b class="caret"></b>

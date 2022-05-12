@@ -82,10 +82,13 @@ else
                             'resume_partie'=>$resume." ".$textechoix1,
                         ));
                         ?>
-                        <div class="alert alert-danger" role="alert">
-                            <h3 class="alert-heading">Vous êtes mort !</h3>
+                        <h3 class="alert-heading ">Vous êtes mort !</h3>
                             <hr>
-                            <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a></p> 
+                            <p class="text-center">Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  
+                            </p> 
+                            <p class="text-center">
+                            <a href="index.php" class="btn btn-danger role="button" > Retour au choix des histoires </a>
+                            </p>
                         </div>
                         <div id="accordion">
                         <div class="card">
@@ -128,9 +131,13 @@ else
                         ));
                         ?>
                         <div class="alert alert-danger" role="alert">
-                            <h3 class="alert-heading">Vous êtes mort !</h3>
-                            <hr>
-                            <p>Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  <a href="index.php" class="btn btn-success" role="button" > Retour au choix des histoires </a></p> 
+                        <h3 class="alert-heading ">Vous êtes mort !</h3>
+<hr>
+                            <p class="text-center">Erf, malheureusement vous n'avez pas su prendre les bonnes décisions. Cela arrive mais nous vous suggérons d'écouter ce que vos amis ont à vous dire lors d'importantes décisions.  
+                            </p> 
+                            <p class="text-center">
+                            <a href="index.php" class="btn btn-danger role="button" > Retour au choix des histoires </a>
+                    </p>
                         </div>
                         <div id="accordion">
                          <div class="card">
@@ -239,9 +246,8 @@ else
 
 
 
-    <footer class="footer">
-    Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer></div>
+<?= include("includes/footer.php"); ?>
+</div>
 
 <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>

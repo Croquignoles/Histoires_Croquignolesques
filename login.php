@@ -35,10 +35,8 @@
                 </div>
             </form>
         </div>
-
-        <footer class="footer">
-    Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer>    </div>
+<?= include("includes/footer.php"); ?>
+</div>
 
     <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>

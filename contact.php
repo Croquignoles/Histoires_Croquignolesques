@@ -28,6 +28,7 @@ else
 <h3>En fait non vous pouvez pas nous contacter aha prank </h3>
 </div>
 
+<?= include("includes/footer.php"); ?>
 
 
 <!-- jQuery -->

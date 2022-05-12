@@ -97,10 +97,11 @@ addGameFunction($BDD, $id, $nbParties)
                     $descourte = $ligne3["desc_courte"];
                     ?>
 
-                    <div class="col-sm-<?=$nbchoix?>">
-                    <p><small><?= $descourte?></small></p>
-                    <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>" class="btn btn-info" role="button"> J'y vais !</a>
-                </div>
+                    <div class="col text-center">
+                    <p><small><?= $descourte?></small>
+                    <a href="page.php?story=<?=$titrehistoire?>&idstory=<?=$idhistoire?>&idpage=<?=$idpagechoix?>&idpageretour=<?=$idpage?>" class="btn" role="button">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span> J'y vais !</a>                </div>
+                    </p>
                 <?php 
                 } 
                 
@@ -110,9 +111,9 @@ addGameFunction($BDD, $id, $nbParties)
         </div>
             </div>
         
-    <footer class="footer">
-    Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer></div>
+            </div>
+
+<?= include("includes/footer.php"); ?>
 
 <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>

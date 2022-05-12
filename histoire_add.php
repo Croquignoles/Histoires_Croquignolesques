@@ -58,6 +58,8 @@ else
           </div>
 </div>
 
+<?= include("includes/footer.php"); ?>
+
 </div>
 <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
