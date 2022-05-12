@@ -1,8 +1,8 @@
 <?php
 $id_histoire = $_GET['id_histoire'];
 $id_page = $_GET['id_page'];
+//Redirection
 header("Location: gerer_histoire.php?id=$id_histoire");
-
 include("includes/connect.php");
 include("modif_histoire.php");
 $title = $_POST['title'];
@@ -17,7 +17,7 @@ if(isset($_POST['is_goodend'])){
     $dead = 2;
 } 
 
-
+//Met à jour le paragraphe modifié dans la BDD
 $req = $BDD->prepare('UPDATE pages SET desc_courte = :desc_courte, text_page = :text_page, est_victoire_echec = :deadend WHERE id_pages = :id');
 $req->execute(array(
  'desc_courte' => $title,
@@ -25,7 +25,7 @@ $req->execute(array(
  'deadend' => $dead,
  'id' => $id_page
 ));
-
+//Met à jour les liens affectés dans la BDD
 $req2 = $BDD->prepare('UPDATE liens_pages SET id_page_depart=:pagedep, id_page_arrivee = :pagearr, id_histoire = :idhist WHERE id_page_arrivee = :id');
 $req2->execute(array(
  'pagedep' => $id_page_dep,
@@ -33,6 +33,3 @@ $req2->execute(array(
  'idhist' => $id_histoire,
  'id' => $id_page
 ));
-
-
-?>

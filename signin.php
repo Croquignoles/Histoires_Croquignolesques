@@ -1,11 +1,9 @@
 <?php if(!isset($_SESSION)){
     session_start();
-    
-
 }?>
+
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +16,8 @@
         <?php include("includes/navbar.php");
         ?>
 
-        <h2 class="text-center">Inscription</h2>
-
+    <h2 class="text-center">Inscription</h2>
+    <!-- Formulaire d'inscription -->
     <div class="container">
         <div class="well">
             <form class="form-signin form-horizontal" role="form" action="traitesignin.php" method="post">
@@ -38,6 +36,7 @@
                         <input type="password" name="password_check" class="form-control" placeholder="Confirmez votre mot de passe" required>
                     </div>
                 </div>
+                <!-- Formulaire radio pour déterminer le type d'utilisateur -->
                 <div class="form-check">
                     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <input class="form-check-input" type="radio" name="choixAdmin" id="isNotAdmin" value="no" checked>
@@ -54,7 +53,7 @@
                         </label>
                     </div>
                 </div>
-
+                <!-- Bouton de confirmation -->
                 <div class="form-group">
                     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
                         <button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-ok"></span> S'inscrire </button>
@@ -64,9 +63,8 @@
         </div>
 </div>
 
-        <footer class="footer">
-    Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer>    </div>
+<?= include("includes/footer.php"); ?>
+</div>
 
     <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>

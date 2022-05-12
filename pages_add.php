@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>Histoires croquignolesques - ajout d'une page</title>
+    <title>Croquignolerie</title>
 </head>
     <body>
       <?php if(!empty($_SESSION['user']))
@@ -89,9 +89,8 @@ else
             </form>
           </div>
 
-          <footer class="footer">
-    Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.
-</footer>      </div>
+          <?= include("includes/footer.php"); ?>
+</div>
 
       <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
