@@ -27,7 +27,7 @@ else
           </br>
  
           <div class="well" style="    background-color: #D5F5E3;">
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteaddmovie.php" method="post">
+            <form class="form-horizontal" role="form" enctype="multipart/form-data" action="traiteaddhistoire.php" method="post">
               <input type="hidden" name="id" value="">
               <div class="form-group">
                 <label class="col-sm-4 control-label">Titre de l'histoire</label>
