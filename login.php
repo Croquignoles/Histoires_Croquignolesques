@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>Histoires croquignolesques - Connexion</title>
+    <title>Croquignolerie</title>
 </head>
 <body>
         <?php include("includes/navbar.php");

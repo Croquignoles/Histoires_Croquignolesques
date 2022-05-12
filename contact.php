@@ -1,6 +1,8 @@
 <?php session_start(); ?>
+
+<!-- Page du site qui donne accès à nos contacts (mais en fait c'est une blague) -->
 <!doctype html>
-<html> 
+<html>
 
 <?php include("includes/connect.php"); ?>
 
@@ -15,30 +17,31 @@
 
 <body>
 
-<?php 
-if(!empty($_SESSION['user']))
-    include("includes/navbar_connected.php"); 
-else 
-    include("includes/navbar.php"); 
-?>
-<div class="container">
-<div class="text-center">
-  <img src="images/lesdeuxzozos.png" class="rounded" alt="Photo de Lorinda et Hugo">
-</br>
-<h3>En fait non vous pouvez pas nous contacter aha prank </h3>
-</br>
+    <?php
+    if (!empty($_SESSION['user']))
+        include("includes/navbar_connected.php");
+    else
+        include("includes/navbar.php");
+    ?>
+    <div class="container">
+        <div class="text-center">
+            <img src="images/lesdeuxzozos.png" class="rounded" alt="Photo de Lorinda et Hugo">
+            </br>
+            <h3>En fait non vous pouvez pas nous contacter aha prank </h3>
+            </br>
 
-</br>
+            </br>
 
-</div>
-</div>
+        </div>
+    </div>
 
-<?= include("includes/footer.php"); ?>
+    <?= include("includes/footer.php"); ?>
 
 
-<!-- jQuery -->
-<script src="lib/jquery/jquery.min.js"></script>
-<!-- JavaScript Boostrap plugin -->
-<script src="lib/bootstrap/js/bootstrap.min.js"></script></body>
+    <!-- jQuery -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <!-- JavaScript Boostrap plugin -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
 
 </html>

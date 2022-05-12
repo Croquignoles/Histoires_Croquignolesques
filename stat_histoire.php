@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION)){
+<?php if (!isset($_SESSION)) {
     session_start();
 }
 $id_histoire = $_GET['id'];
@@ -16,47 +16,47 @@ $id_histoire = $_GET['id'];
 </head>
 
 <body>
-<?php 
-require_once("includes/connect.php");
-$maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id_histoire";
+    <?php
+    require_once("includes/connect.php");
+    //Requête retournant la ligne de la table histoire associée à l'histoire choisie par l'utilisateur 
+    $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id_histoire";
+    $response = $BDD->query($maRequete1);
+    $ligne = $response->fetch();
+    $id = $ligne["id_histoire"];
+    $nbParties = $ligne["nb_parties"];
+    $nbVictoires = $ligne["nb_victoires"];
+    $nbEchecs = $ligne["nb_echecs"];
 
-$response = $BDD->query($maRequete1);
-$ligne = $response->fetch();
-$id = $ligne["id_histoire"];
-$nbParties = $ligne["nb_parties"];
-$nbVictoires=$ligne["nb_victoires"];
-$nbEchecs=$ligne["nb_echecs"];
 
-
-if(!empty($_SESSION['user']))
-    require_once("includes/navbar_connected.php"); 
-else 
-    require_once("includes/navbar.php");
+    if (!empty($_SESSION['user']))
+        require_once("includes/navbar_connected.php");
+    else
+        require_once("includes/navbar.php");
     ?>
-<div>
-    
-<p class="center"><strong>Nombre de partie jouées :</strong> <?=$nbParties?></p>
-<p class="center"><strong>Nombre de victoires :</strong> <?=$nbVictoires?></p>
-<p class="center"><strong>Nombre d'échecs :</strong> <?=$nbEchecs?></p>
-<p class="center"><strong>Pourcentage de victoire :</strong> <?php
-if($nbVictoires+$nbEchecs==0)
-{
-    ?> 0 %<?php
-}
-else 
-{
-   echo ($nbVictoires/($nbVictoires+$nbEchecs))*100 ;?> %<?php
-}
-    ?></p>
+
+    <!-- Calcul et affichage des statistiques de l'histoire -->
+    <div>
+        <p class="center"><strong>Nombre de partie jouées :</strong> <?= $nbParties ?></p>
+        <p class="center"><strong>Nombre de victoires :</strong> <?= $nbVictoires ?></p>
+        <p class="center"><strong>Nombre d'échecs :</strong> <?= $nbEchecs ?></p>
+        <p class="center"><strong>Pourcentage de victoire :</strong> 
+        <?php
+            if ($nbVictoires + $nbEchecs == 0) {
+            ?> 0 %<?php
+            } else {
+            echo ($nbVictoires / ($nbVictoires + $nbEchecs)) * 100; ?> %<?php
+            }
+            ?></p>
 
 
     </div>
-<?=include("includes/footer.php");?>
-</div>
+    <?= include("includes/footer.php"); ?>
+    </div>
 
     <!-- jQuery -->
-<script src="lib/jquery/jquery.min.js"></script>
-<!-- JavaScript Boostrap plugin -->
-<script src="lib/bootstrap/js/bootstrap.min.js"></script></body>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <!-- JavaScript Boostrap plugin -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
 
 </html>
