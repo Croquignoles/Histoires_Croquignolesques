@@ -36,7 +36,7 @@ else
   <h5 class="def"> <em>Croquignolesque (adjectif) : de Croquignol, personnage de bande dessinée. <br/>
   Ridicule, risible.</em></h5>
     <div class="well" style="background-color: #D5F5E3;" >
-  <h4 class="center">Ce site va vous donner l'opportunité d'incarner un personnage et parcourir des histoires plus rocamboloesques les unes que les autres.
+  <h4 class="center">Ce site va vous donner l'opportunité d'incarner un personnage et parcourir des histoires plus rocambolesques les unes que les autres.
       <br/>
       Veillez à vous connecter pour pouvoir accéder aux histoires. <br/>
       Si vous êtes un administrateur, vous pourrez aussi les créer ou les modifier vous même !  <span class ="glyphicon glyphicon-thumbs-up"> </span>

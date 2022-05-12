@@ -43,6 +43,7 @@ $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 $infoPartie=$BDD->query("SELECT * FROM partie_en_cours WHERE matricule=$matricule");
     $lignePartie=$infoPartie->fetch();
     $idPartie=$lignePartie['id_partie'];
+    $idHistoireEnCours=$lignePartie['id_histoire'];
     $pdv=$lignePartie['nb_pdv'];
     $pageArret=$lignePartie['id_page_arret'];
     $resume=$lignePartie['resume_partie'];
@@ -51,6 +52,10 @@ $checkImpasseDepart=$BDD->query("SELECT * from pages WHERE id_pages=$pageArret")
     $ligneCheck=$checkImpasseDepart->fetch();
     $impasseOuPas=$ligneCheck['est_victoire_echec'];
     $departOuPas=$ligneCheck['is_first_page'];
+
+$titleReprendreHistoire=$BDD->query("SELECT*from histoires where id_histoire=$idHistoireEnCours");
+$ligneReprendreHistoire=$titleReprendreHistoire->fetch();
+$titleHistoire=$ligneReprendreHistoire['nom_histoire'];
 ?>
 
 
@@ -93,7 +98,7 @@ else
             </div>
             <?php if(!$departOuPas && $impasseOuPas!=2 && $pdv>0)  
                 {
-                    ?><div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="page.php?story=<?=$title?>&idstory=<?=$id?>&idpage=<?=$pageArret?>" class="alert-link">la reprendre ?</a>  
+                    ?><div class="alert alert-warning" role="alert"> Attention, vous avez déjà une partie en cours, voulez vous <a href="page.php?story=<?=$titleHistoire?>&idstory=<?=$idHistoireEnCours?>&idpage=<?=$pageArret?>" class="alert-link">la reprendre ?</a>  
                     <?php
                 }        
                 ?>     
