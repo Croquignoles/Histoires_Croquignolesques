@@ -76,7 +76,7 @@ else
 ?>
 
 </nav>
-
+    <div class="container">
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-5 col-sm-7">
@@ -87,7 +87,7 @@ else
                     <p><small><?= $des_courte?></small></p>
                 </div>
                 <div class="col-md-7 col-sm-5">
-                <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-info" role="button" > Let's go !</a>
+                <a href="firstpage.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-success" role="button" > Let's go !</a>
                 </div> 
                 
             </div>
@@ -99,6 +99,7 @@ else
                 ?>     
                 </div>  
         </div>
+    </div>
 
     <footer class="footer">
     Construit avec swag par lololezigoto, élève de l'<a href="https://www.ensc.fr">ENSC</a>.

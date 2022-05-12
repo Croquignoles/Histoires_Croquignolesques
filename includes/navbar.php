@@ -3,8 +3,6 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-
 </div>
   <div class="collapse navbar-collapse" id="navbar-collapse-target">
   <ul class="navbar-nav navbar-right">

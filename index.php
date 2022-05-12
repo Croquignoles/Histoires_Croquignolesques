@@ -44,76 +44,41 @@ else
 </header>
 </nav>
 
-<?php 
-    $maRequete = "SELECT * FROM histoires";
-    $response = $BDD->query($maRequete);
-    $tab = $response->fetchAll();
-    foreach ($tab as $key => $ligne) {
-        $id = $ligne["id_histoire"];
-        $title = $ligne["nom_histoire"];
-        $des_courte = $ligne["description_histoire"];
-        $isHidden=$ligne["isHidden"];
-        ?>
-
-
-
-
-<article>
-  
-            <?php 
-            if($isHidden==0)
-            {
-              if(!empty($_SESSION['user'])) {?>
-                <div class="well"     >
-                <h3><a class="link" href="histoire.php?id=<?=$id?>"><?=$title ?></a></h3>
-            <?php 
-                echo $des_courte; ?>         
-            </div>
-
-                <?php } else {?>
-                <h3><?=$title ?></h3>
-            <p class="movieContent"><?= $des_courte?></p>
-            <?php
-            }
-            ?>
-            
-
-</article>
-<?php } 
-
-}?>
-</div>
-
-<div class="container">
 <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
-      <ol class="carousel-indicators">
-        <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
-        <li data-slide-to="1" data-target="#carousel-example-generic" class=""></li>
-        <li data-slide-to="2" data-target="#carousel-example-generic" class=""></li>
-      </ol>
-      <div class="carousel-inner" style=" width:100%; height: 500px !important;">
-        <div class="item active">
-          <img alt="First slide"  src="images/defonce.jpg">
-            <div class="carousel-caption d-none d-md-block" >
-              <h5>test titre</h5>
-              <a href="histoire.php?story=Désolé pour hier soir&id=1" class="btn btn-default" role="button" > Je joue !</a>
-              </br>
-            </div>
-        </div>
+      <ol class="carousel-indicators">        
+      <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
       <?php $maRequete = "SELECT * FROM histoires";
       $response = $BDD->query($maRequete);
       $tab = $response->fetchAll();
-      foreach ($tab as $key => $ligne) {
-        $id = $ligne["id_histoire"];
-        $title = $ligne["nom_histoire"];
-        $des_courte = $ligne["description_histoire"];
-        $isHidden=$ligne["isHidden"];
-        $image = $ligne["image_histoire"];?>
+      $j=1;
+      foreach ($tab as $key => $ligne){?>
+      <li data-slide-to="<?=$j?>" data-target="#carousel-example-generic" class=""></li>
+      <?php
+      $j=$j+1;
+      }
+      ?>
+      </ol>
+
+      <div class="carousel-inner" >
+        <div class="item active">
+          <img alt="First slide"  src="images/choix.jpg" style=" width:100%; height: 600px !important;">
+        </div>
+        <?php $maRequete = "SELECT * FROM histoires";
+        $response = $BDD->query($maRequete);
+        $tab = $response->fetchAll();
+        $i=1;
+        foreach ($tab as $key => $ligne) {
+          $id = $ligne["id_histoire"];
+          $title = $ligne["nom_histoire"];
+          $des_courte = $ligne["description_histoire"];
+          $isHidden=$ligne["isHidden"];
+          $image = $ligne["image_histoire"];
+          $i=$i+1?>
 
         <div class="item">
-          <img alt="Second slide"  src="images/<?=$image?>" style=" width:100%; height: 500px !important;">
-          <div class="carousel-caption d-none d-md-block" >
-              <h5><?=$title?></h5>
+          <img alt="slide n°<?=$i?> : couverture de <?=$title?>"  src="images/<?=$image?>" style=" width:100%; height: 600px !important;">
+          <div class="carousel-caption d-md-block" >
+              <p><span class="badge badge-secondary">" <?=$title?> " : <?=$des_courte?></span></p>
               <a href="histoire.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-default" role="button" > Je joue !</a>
               </br>
             </div>
@@ -121,11 +86,6 @@ else
       <?php
       }
       ?>
-
-        <div class="item">
-          <img alt="Third slide"  src="images/defonce.jpg">
-        </div>
-      </div>
       <!--Boutons directionnels du carousel-->
       <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control">
         <span class="glyphicon glyphicon-chevron-left"></span>

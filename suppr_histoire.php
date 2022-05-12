@@ -43,10 +43,12 @@ else
 
 <article>
 <h4 class = "center"> Votre histoire vient d'être supprimée </h4>
-
+<div class="center">
 <a href="all_histoires_admin.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Retour à la gestion des histoires</a>
-
+</div>
 </article>
+</br>
+</br>
 
 </div>
 
