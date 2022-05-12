@@ -101,7 +101,7 @@ else
 </html>
 
                   
-<?= include("includes/footer.php"); ?>
+<?= include("includes/footer.php");?>
 
 </div>
 
