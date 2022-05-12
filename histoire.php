@@ -72,7 +72,7 @@ $titleHistoire=$ligneReprendreHistoire['nom_histoire'];
 
 <?php 
 
-include("functions.php");
+include("includes/functions.php");
 
 if(!empty($_SESSION['user']))
     include("includes/navbar_connected.php"); 

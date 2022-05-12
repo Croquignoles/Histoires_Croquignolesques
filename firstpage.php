@@ -66,7 +66,7 @@ if(!empty($_SESSION['user']))
 else 
     include("includes/navbar.php"); 
 
-include("functions.php");
+include("includes/functions.php");
 $maRequete1 = "SELECT * FROM histoires WHERE id_histoire=$id";
 
     $response = $BDD->query($maRequete1);

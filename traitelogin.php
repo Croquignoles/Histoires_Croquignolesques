@@ -11,13 +11,14 @@ $response = $BDD->prepare($requete);
 $response->execute(array($login, $mdp));
 $ligne = $response->fetch();
 $nb = $response->rowCount(); 
-$isAdmin = $ligne['admin_user'];
-$matricule=$ligne['matricule'];
+
 
 if ($nb ==0){                
     echo "Utilisateur non reconnu ! "; 
 }else if ($nb==1){        
-     echo "Bonjour " . $login . "!";        
+     echo "Bonjour " . $login . "!";
+     $isAdmin = $ligne['admin_user'];
+$matricule=$ligne['matricule'];        
         $_SESSION['user'] = $login;
         $_SESSION['matricule'] =$matricule;       
         header("Location: index.php");

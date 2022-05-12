@@ -50,13 +50,15 @@ else
                 <a href="stat_histoire.php?id=<?=$id_histoire?>" class="btn btn-info" role="button" > Voir les stats de l'histoire</a>
                 </div>
             </br>
-
+                <?php if($id_histoire != 1) {?>
                 <div class="text-center">
                 <a href="hide_histoire.php?id=<?=$id_histoire?>" class="btn btn-success" role="button" > Cacher cette histoire ou la rendre visible </a>
                 </div>
+                <?php } ?>
 </div>
 
 </article>
+</br>
 </br>
 
 

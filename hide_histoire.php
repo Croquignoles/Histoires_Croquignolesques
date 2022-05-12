@@ -2,7 +2,7 @@
     session_start();
 
 include("includes/connect.php");
-include("functions.php");
+include("includes/functions.php");
 
 $id_histoire = $_GET['id'];
 

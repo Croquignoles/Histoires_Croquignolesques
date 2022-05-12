@@ -51,10 +51,14 @@ else
       $response = $BDD->query($maRequete);
       $tab = $response->fetchAll();
       $j=1;
-      foreach ($tab as $key => $ligne){?>
+      foreach ($tab as $key => $ligne){
+        $hidden = $ligne['isHidden'];      
+        if($hidden==0){
+        ?>
       <li data-slide-to="<?=$j?>" data-target="#carousel-example-generic" class=""></li>
       <?php
       $j=$j+1;
+      }
       }
       ?>
       </ol>
@@ -63,7 +67,8 @@ else
         <div class="item active">
           <img alt="First slide"  src="images/choix.jpg" style=" width:100%; height: 600px !important;">
         </div>
-        <?php $maRequete = "SELECT * FROM histoires";
+        <?php 
+        $maRequete = "SELECT * FROM histoires";
         $response = $BDD->query($maRequete);
         $tab = $response->fetchAll();
         $i=1;
@@ -75,15 +80,21 @@ else
           $image = $ligne["image_histoire"];
           $i=$i+1?>
 
+          <?php if($isHidden==0){?>
         <div class="item">
           <img alt="slide n°<?=$i?> : couverture de <?=$title?>"  src="images/<?=$image?>" style=" width:100%; height: 600px !important;">
           <div class="carousel-caption d-md-block" >
               <p><span class="badge badge-secondary">" <?=$title?> " : <?=$des_courte?></span></p>
+              <?php if(isset($_SESSION['user'])){
+                if($_SESSION['isAdmin']==1){?>
               <a href="histoire.php?story=<?=$title?>&id=<?=$id?>" class="btn btn-default" role="button" > Je joue !</a>
+              <?php }
+              } ?>
               </br>
             </div>
         </div>
       <?php
+          }
       }
       ?>
       <!--Boutons directionnels du carousel-->

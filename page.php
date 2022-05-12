@@ -16,7 +16,7 @@ $matricule=$_SESSION['matricule'];
 <html> 
 
 <?php include("includes/connect.php"); 
-    include("functions.php");
+    include("includes/functions.php");
 
 $maRequete = "SELECT * FROM pages WHERE id_histoire = $idhistoire AND id_pages = $idpage";
                 $response = $BDD->query($maRequete);
