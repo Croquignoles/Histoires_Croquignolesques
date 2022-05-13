@@ -19,7 +19,7 @@ if ($nbPartiesJoueur == 0) {
     VALUES (:id_histoire,:id_page_arret,:resume_partie,:matricule)";
     $repHistoire = $BDD->prepare($startHistoire);
     $repHistoire->execute(array(
-        ':id_histoire' => $idhistoire,
+        ':id_histoire' => $id,
         ':id_page_arret' => 1,
         'resume_partie' => $texte,
         'matricule' => $_SESSION['matricule'],
@@ -48,13 +48,13 @@ $pageArret = $lignePartie['id_page_arret'];
 $resume = $lignePartie['resume_partie'];
 
 //Requête qui relève la page où s'est arrêté le joueur 
-$checkImpasseDepart = $BDD->query("SELECT * from pages WHERE id_pages=$pageArret");
+$checkImpasseDepart = $BDD->query("SELECT * FROM pages WHERE id_pages=$pageArret");
 $ligneCheck = $checkImpasseDepart->fetch();
 $impasseOuPas = $ligneCheck['est_victoire_echec'];
 $departOuPas = $ligneCheck['is_first_page'];
 
 //Requête qui retourne le nom de l'histoire en cours 
-$titleReprendreHistoire = $BDD->query("SELECT*from histoires where id_histoire=$idHistoireEnCours");
+$titleReprendreHistoire = $BDD->query("SELECT * FROM histoires WHERE id_histoire=$idHistoireEnCours");
 $ligneReprendreHistoire = $titleReprendreHistoire->fetch();
 $titleHistoire = $ligneReprendreHistoire['nom_histoire'];
 ?>
