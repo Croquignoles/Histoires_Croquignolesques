@@ -10,15 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <title>Un site internet quelconque - Inscription</title>
+    <title>Croquignolerie</title>
 </head>
 <body>
         <?php include("includes/navbar.php");
         ?>
 
+
+<div class="container">
     <h2 class="text-center">Inscription</h2>
     <!-- Formulaire d'inscription -->
-    <div class="container">
         <div class="well">
             <form class="form-signin form-horizontal" role="form" action="traitesignin.php" method="post">
                 <div class="form-group">

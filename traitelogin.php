@@ -18,7 +18,7 @@ if ($nb ==0){
 }else if ($nb==1){        
      echo "Bonjour " . $login . "!";
      $isAdmin = $ligne['admin_user'];
-$matricule=$ligne['matricule'];        
+        $matricule=$ligne['matricule'];        
         $_SESSION['user'] = $login;
         $_SESSION['matricule'] =$matricule;       
         header("Location: index.php");
