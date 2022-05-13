@@ -25,10 +25,14 @@ $requete->execute(array(
  'pass' => $mdp,
  'booladmin' => $boolAdmin,
 ));
-$_SESSION['matricule']= $BDD->lastInsertId();
-$_SESSION['user'] = $login;   
+
+
+$_SESSION['matricule']=$BDD->lastInsertId();
+$_SESSION['user'] = $login; 
+$_SESSION['isAdmin']=$boolAdmin;       
 header("Location:index.php");
-} else {   
+} else 
+{   
 header("Location:mdp_incorrect.php");
 }
 
