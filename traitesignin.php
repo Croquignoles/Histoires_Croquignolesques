@@ -25,14 +25,14 @@ $requete->execute(array(
  'pass' => $mdp,
  'booladmin' => $boolAdmin,
 ));
-//Initialisation des variables de session
-$reqMat=$BDD->query("SELECT * FROM users WHERE id_user=$login AND mdp_user=$mdp");
-$repMat=$reqMat->fetch();
-$matricule=$repMat['matricule'];
-$_SESSION['matricule']=$matricule;
-$_SESSION['user'] = $login;        
+
+
+$_SESSION['matricule']=$BDD->lastInsertId();
+$_SESSION['user'] = $login; 
+$_SESSION['isAdmin']=$boolAdmin;       
 header("Location:index.php");
-} else {   
+} else 
+{   
 header("Location:mdp_incorrect.php");
 }
 
