@@ -1,6 +1,7 @@
 <?php if (!isset($_SESSION)) {
   session_start();
-} ?>
+} 
+?>
 
 <!doctype html>
 <html>
@@ -88,8 +89,7 @@
               <div class="carousel-caption d-md-block">              
                 <!-- Titre et description -->
                 <p><span class="badge badge-secondary">" <?= $title ?> " : <?= $des_courte ?></span></p>
-                <?php if (isset($_SESSION['user'])) {
-                  if ($_SESSION['isAdmin'] == 1) { ?>
+                <?php if (isset($_SESSION['user'])) {?>
                     <!-- Bouton de redirection vers le jeu -->
                     <a href="histoire.php?story=<?= $title ?>&id=<?= $id ?>" class="btn btn-default" role="button"> Je joue !</a>
                 <?php }
@@ -99,7 +99,6 @@
             </div>
         <?php
           }
-        }
         ?>
         <!--Boutons directionnels du carousel-->
         <a data-slide="prev" href="#carousel-example-generic" class="left carousel-control">

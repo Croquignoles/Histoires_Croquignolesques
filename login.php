@@ -15,7 +15,7 @@
  
         <h2 class="text-center">Connexion</h2>
 
-        
+<div class="container">
         <div class="well">
             <form class="form-signin form-horizontal" role="form" action="traitelogin.php" method="post">
                 <div class="form-group">
@@ -35,6 +35,7 @@
                 </div>
             </form>
         </div>
+</div>
 <?= include("includes/footer.php"); ?>
 </div>
 

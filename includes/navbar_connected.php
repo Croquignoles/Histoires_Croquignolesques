@@ -14,8 +14,6 @@
                     <?php 
                     if(isset($_SESSION['isAdmin']))
                         if($_SESSION['isAdmin']==1){?>
-
-                        
                             <ul class="nav navbar-nav">
                                 <li><a href="histoire_add.php">Créer une nouvelle histoire</a></li>
                             </ul>
